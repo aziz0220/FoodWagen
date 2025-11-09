@@ -37,6 +37,7 @@ class MealApiClient {
       food_name: item.food_name || item.name || 'Unknown',
       food_rating: typeof item.food_rating === 'number' ? item.food_rating : (typeof item.rating === 'number' ? item.rating : 0),
       food_image: item.food_image || item.image || item.avatar || '',
+      food_price: item.food_price || (8 + Math.random() * 32), // Random price 8-40 if not provided
       restaurant_name: item.restaurant_name || item.name || 'Unknown',
       restaurant_logo: item.restaurant_logo || item.logo || item.avatar || '',
       restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open Now'),
