@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans, Source_Sans_3 } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { ThemeProvider } from "@/lib/theme";
 import "@/styles/food-design-system.css";
 import "@/styles/food-figma-design.css";
 import "./globals.css";
@@ -31,7 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.variable} ${sourceSansPro.variable}`}>
-        <Providers>{children}</Providers>
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
