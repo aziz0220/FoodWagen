@@ -4,6 +4,7 @@ import { Providers } from "@/components/Providers";
 import { ThemeProvider } from "@/lib/theme";
 import "@/styles/food-design-system.css";
 import "@/styles/food-figma-design.css";
+import "@/styles/food-theme.css";
 import "./globals.css";
 
 const openSans = Open_Sans({
