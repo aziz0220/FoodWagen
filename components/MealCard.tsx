@@ -119,26 +119,6 @@ export const MealCard: React.FC<MealCardProps> = ({
         <div>
           <Badge status={meal.restaurant_status} data-testid="restaurant-status" />
         </div>
-
-        {/* Action Buttons */}
-        <div className="food-card-actions">
-          <Button
-            variant="secondary"
-            onClick={() => onEdit(meal)}
-            style={{ flex: 1, fontSize: '14px', padding: '12px 16px', height: 'auto' }}
-            data-testid="edit-button"
-          >
-            Edit
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() => onDelete(meal)}
-            style={{ flex: 1, fontSize: '14px', padding: '12px 16px', height: 'auto' }}
-            data-testid="delete-button"
-          >
-            Delete
-          </Button>
-        </div>
       </div>
     </div>
   );
