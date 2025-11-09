@@ -1,6 +1,6 @@
 /**
- * FoodWagen Home Page
- * Main page with meals grid, search, filter, and modal management
+ * FoodWagen Home Page - Figma Design
+ * Main page with navigation, hero, featured meals, and footer
  */
 
 'use client';
@@ -10,11 +10,13 @@ import { useMeals, useCreateMeal, useUpdateMeal, useDeleteMeal } from '@/lib/hoo
 import { useFoodWagenStore } from '@/lib/store';
 import { applyAllFilters } from '@/lib/utils';
 import { CreateMealData, UpdateMealData } from '@/types/meal';
-import { MealCard } from '@/components/MealCard';
+import { Navigation } from '@/components/layout/Navigation';
+import { Hero } from '@/components/layout/Hero';
+import { FeaturedMeals } from '@/components/FeaturedMeals';
+import { Footer } from '@/components/layout/Footer';
 import { AddMealModal } from '@/components/AddMealModal';
 import { EditMealModal } from '@/components/EditMealModal';
 import { DeleteMealModal } from '@/components/DeleteMealModal';
-import { Button } from '@/components/Button';
 
 export default function Home() {
   // Fetch meals data
@@ -72,33 +74,35 @@ export default function Home() {
     }
   };
 
-  return (
-    <main className="food-container">
-      {/* Hero Section */}
-      <section style={{ padding: '48px 0', textAlign: 'center' }}>
-        <h1 className="food-text-hero" style={{ marginBottom: '24px' }}>
-          Discover Amazing Meals
-        </h1>
-        <Button
-          variant="primary"
-          onClick={openAddModal}
-          data-testid="add-meal-button"
-          style={{ margin: '0 auto' }}
-        >
-          Add New Meal
-        </Button>
-      </section>
+  // Handle search from hero
+  const handleSearch = (query: string) => {
+    useFoodWagenStore.getState().setSearchQuery(query);
+  };
 
-      {/* Meals Grid */}
-      <section className="food-content" style={{ paddingBottom: '48px' }}>
+  // Handle load more (for future pagination)
+  const handleLoadMore = () => {
+    // TODO: Implement pagination
+    console.log('Load more clicked');
+  };
+
+  return (
+    <>
+      {/* Navigation */}
+      <Navigation onAddMealClick={openAddModal} />
+
+      {/* Hero Section */}
+      <Hero onSearch={handleSearch} />
+
+      {/* Featured Meals Section */}
+      <main>
         {isLoading && (
-          <div className="food-flex-center" style={{ padding: '48px 0' }}>
+          <div className="food-flex-center" style={{ padding: '80px 0' }}>
             <p className="food-text-body">Loading meals...</p>
           </div>
         )}
 
         {error && (
-          <div className="food-flex-center" style={{ padding: '48px 0' }}>
+          <div className="food-flex-center" style={{ padding: '80px 0' }}>
             <p className="food-text-error">
               Failed to load meals. Please try again later.
             </p>
@@ -106,27 +110,26 @@ export default function Home() {
         )}
 
         {!isLoading && !error && filteredMeals.length === 0 && (
-          <div className="food-flex-center" style={{ padding: '48px 0' }}>
+          <div className="food-flex-center" style={{ padding: '80px 0' }}>
             <p className="food-text-body">
-              No meals found. {meals.length === 0 ? 'Add your first meal!' : 'Try adjusting your filters.'}
+              No meals found. {meals.length === 0 ? 'Add your first meal!' : 'Try adjusting your search.'}
             </p>
           </div>
         )}
 
         {!isLoading && !error && filteredMeals.length > 0 && (
-          <div className="food-grid" data-testid="meals-grid">
-            {filteredMeals.map((meal) => (
-              <MealCard
-                key={meal.id}
-                meal={meal}
-                onEdit={openEditModal}
-                onDelete={openDeleteModal}
-                data-testid={`meal-card-${meal.id}`}
-              />
-            ))}
-          </div>
+          <FeaturedMeals
+            meals={filteredMeals.slice(0, 8)}
+            onEdit={openEditModal}
+            onDelete={openDeleteModal}
+            onLoadMore={handleLoadMore}
+            hasMore={filteredMeals.length > 8}
+          />
         )}
-      </section>
+      </main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Modals */}
       <AddMealModal
