@@ -154,6 +154,6 @@ export default function Home() {
         onConfirm={handleDeleteMeal}
         isLoading={deleteMealMutation.isPending}
       />
-    </main>
+    </>
   );
 }
