@@ -168,8 +168,11 @@ export function isValidUrl(url: string): boolean {
 /**
  * Format rating for display
  */
-export function formatRating(rating: number): string {
-  return rating.toFixed(1);
+export function formatRating(rating: number | undefined | null): string {
+  if (rating === undefined || rating === null || isNaN(rating)) {
+    return '0.0';
+  }
+  return Number(rating).toFixed(1);
 }
 
 /**
