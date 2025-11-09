@@ -1,0 +1,471 @@
+/**
+ * FoodWagen Figma Design System - Home Page Styles
+ * Custom CSS matching the exact Figma specifications
+ */
+
+/* ===== NAVIGATION ===== */
+.food-nav {
+  background: #ffffff;
+  box-shadow: 0px 5px 10px 0px rgba(255, 174, 0, 0.26), 0px 20px 40px 0px rgba(255, 174, 0, 0.29);
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.food-nav-content {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 16px 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-logo {
+  display: flex;
+  align-items: center;
+  gap: 11.5px;
+}
+
+.food-logo-icon {
+  width: 28px;
+  height: 30px;
+  position: relative;
+}
+
+.food-logo-text {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 31.11px;
+  line-height: 1.2;
+  letter-spacing: -0.7778px;
+  color: #f17228;
+}
+
+.food-logo-accent {
+  color: #ffb30e;
+}
+
+.food-button--nav {
+  padding: 12px 24px;
+  font-size: 18px;
+  width: 150px;
+}
+
+/* ===== HERO SECTION ===== */
+.food-hero {
+  background: linear-gradient(135deg, #ffb30e 0%, #ffa500 100%);
+  height: 628px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.food-hero-content {
+  max-width: 856px;
+  margin-left: 220px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.food-hero-title h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 88px;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0px 27px 82px rgba(255, 174, 0, 0.28), 0px 14px 15px rgba(255, 174, 0, 0.01);
+  margin: 0 0 15px 0;
+}
+
+.food-hero-title p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0;
+}
+
+.food-hero-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 5px 10px 0px rgba(255, 174, 0, 0.26), 0px 20px 40px 0px rgba(255, 174, 0, 0.29);
+  overflow: hidden;
+}
+
+.food-hero-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 24px;
+}
+
+.food-hero-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  color: #757575;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.food-hero-tab--active {
+  background: rgba(241, 114, 40, 0.1);
+  color: #f17228;
+}
+
+.food-hero-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.food-hero-search {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  align-items: center;
+}
+
+.food-hero-input-wrapper {
+  flex: 1;
+}
+
+.food-hero-input {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 7px 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.food-hero-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #424242;
+  outline: none;
+}
+
+.food-hero-input input::placeholder {
+  color: #9e9e9e;
+}
+
+.food-button--search {
+  padding: 21px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.food-hero-image {
+  position: absolute;
+  right: 316px;
+  top: 50%;
+  transform: translateY(-50%) rotateY(180deg);
+  z-index: 1;
+  width: 497px;
+  height: 497px;
+}
+
+/* ===== FEATURED MEALS SECTION ===== */
+.food-featured {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 88px;
+}
+
+.food-featured-title {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 43px;
+  line-height: 1.12;
+  color: #212121;
+  text-align: center;
+  margin: 0;
+}
+
+.food-featured-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.food-featured-row {
+  display: grid;
+  grid-template-columns: repeat(4, 357px);
+  gap: 16px;
+}
+
+.food-load-more {
+  padding: 21px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== FOOTER ===== */
+.food-footer {
+  background: #212121;
+  width: 100%;
+}
+
+.food-footer-content {
+  max-width: 1518px;
+  margin: 0 auto;
+  padding: 0 220px;
+}
+
+.food-footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin: 63px 0;
+}
+
+.food-footer-main {
+  display: flex;
+  justify-between;
+  gap: 40px;
+}
+
+.food-footer-menu {
+  display: flex;
+  gap: 120px;
+}
+
+.food-footer-column h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 40px 0;
+}
+
+.food-footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.food-footer-column a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.food-footer-column a:hover {
+  color: #ffb30e;
+}
+
+.food-footer-subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  width: 483px;
+}
+
+.food-footer-social h4 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #f5f5f5;
+  opacity: 0.6;
+  text-transform: uppercase;
+  margin: 0 0 40px 0;
+}
+
+.food-footer-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.food-footer-icons a {
+  font-size: 24px;
+  color: #f5f5f5;
+  opacity: 0.8;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.food-footer-icons a:hover {
+  opacity: 1;
+}
+
+.food-footer-newsletter p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #bbbbbb;
+  margin: 0 0 40px 0;
+}
+
+.food-footer-input-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.food-footer-input {
+  flex: 1;
+  background: #424242;
+  border-radius: 8px;
+  padding: 7px 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.food-footer-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #ffffff;
+  outline: none;
+}
+
+.food-footer-input input::placeholder {
+  color: #adadad;
+}
+
+.food-button--subscribe {
+  padding: 21px 24px;
+  width: 133px;
+}
+
+.food-footer-bottom {
+  padding-bottom: 40px;
+}
+
+.food-footer-copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.food-footer-left,
+.food-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #f5f5f5;
+}
+
+.food-footer-left strong,
+.food-footer-right strong {
+  font-weight: 700;
+}
+
+.food-icon {
+  display: inline-block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1536px) {
+  .food-nav-content {
+    padding: 16px 120px;
+  }
+
+  .food-hero-content {
+    margin-left: 120px;
+  }
+
+  .food-hero-image {
+    right: 150px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .food-nav-content {
+    padding: 16px 60px;
+  }
+
+  .food-hero-content {
+    margin-left: 60px;
+    max-width: 600px;
+  }
+
+  .food-hero-title h1 {
+    font-size: 64px;
+  }
+
+  .food-featured-row {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-nav-content {
+    padding: 16px 24px;
+  }
+
+  .food-hero {
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .food-hero-content {
+    margin: 0 24px;
+    max-width: 100%;
+  }
+
+  .food-hero-title h1 {
+    font-size: 48px;
+  }
+
+  .food-hero-image {
+    display: none;
+  }
+
+  .food-featured-row {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 24px;
+  }
+
+  .food-footer-main {
+    flex-direction: column;
+  }
+
+  .food-footer-menu {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
