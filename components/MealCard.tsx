@@ -99,13 +99,13 @@ export const MealCard: React.FC<MealCardProps> = ({
 
         {/* Restaurant Info */}
         <div className="food-card-restaurant">
-          <div style={{ position: 'relative', width: '40px', height: '40px' }}>
+          <div style={{ position: 'relative', width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden' }}>
             <Image
               src={logoImageError ? '/images/restaurants/restaurant-placeholder.png' : meal.restaurant_logo || '/images/restaurants/restaurant-placeholder.png'}
               alt={meal.restaurant_name}
               fill
               className="food-card-restaurant-logo"
-              style={{ objectFit: 'cover', borderRadius: '50%' }}
+              style={{ objectFit: 'cover' }}
               sizes="40px"
               onError={() => setLogoImageError(true)}
             />
