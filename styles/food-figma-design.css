@@ -245,7 +245,7 @@
 
 .food-footer-main {
   display: flex;
-  justify-between;
+  justify-content: space-between;
   gap: 40px;
 }
 
