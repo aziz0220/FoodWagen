@@ -79,11 +79,16 @@ export default function Home() {
     useFoodWagenStore.getState().setSearchQuery(query);
   };
 
-  // Handle load more (for future pagination)
+  // State for visible meals count
+  const [visibleCount, setVisibleCount] = React.useState(8);
+
+  // Handle load more
   const handleLoadMore = () => {
-    // TODO: Implement pagination
-    console.log('Load more clicked');
+    setVisibleCount(prev => prev + 8);
   };
+
+  // Get visible meals
+  const visibleMeals = filteredMeals.slice(0, visibleCount);
 
   return (
     <>
@@ -119,11 +124,11 @@ export default function Home() {
 
         {!isLoading && !error && filteredMeals.length > 0 && (
           <FeaturedMeals
-            meals={filteredMeals.slice(0, 8)}
+            meals={visibleMeals}
             onEdit={openEditModal}
             onDelete={openDeleteModal}
             onLoadMore={handleLoadMore}
-            hasMore={filteredMeals.length > 8}
+            hasMore={visibleCount < filteredMeals.length}
           />
         )}
       </main>
