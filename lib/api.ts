@@ -28,7 +28,20 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data;
+    return data.map(this.normalizeMealData);
+  }
+
+  private normalizeMealData(item: any): Meal {
+    return {
+      id: item.id,
+      food_name: item.food_name || item.name || 'Unknown',
+      food_rating: typeof item.food_rating === 'number' ? item.food_rating : (typeof item.rating === 'number' ? item.rating : 0),
+      food_image: item.food_image || item.image || item.avatar || '',
+      restaurant_name: item.restaurant_name || item.name || 'Unknown',
+      restaurant_logo: item.restaurant_logo || item.logo || item.avatar || '',
+      restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open Now'),
+      createdAt: item.createdAt,
+    };
   }
 
   async getMealById(id: string): Promise<Meal> {
@@ -45,7 +58,7 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data;
+    return this.normalizeMealData(data);
   }
 
   async createMeal(mealData: CreateMealData): Promise<Meal> {
@@ -63,7 +76,7 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data;
+    return this.normalizeMealData(data);
   }
 
   async updateMeal(id: string, mealData: UpdateMealData): Promise<Meal> {
@@ -81,7 +94,7 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data;
+    return this.normalizeMealData(data);
   }
 
   async deleteMeal(id: string): Promise<void> {
