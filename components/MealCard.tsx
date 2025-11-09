@@ -4,7 +4,7 @@
  * 357×463px as per Figma specs
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Meal } from '@/types/meal';
 import { Badge } from './Badge';
@@ -34,18 +34,22 @@ export const MealCard: React.FC<MealCardProps> = ({
   onDelete,
   ...props
 }) => {
+  const [foodImageError, setFoodImageError] = useState(false);
+  const [logoImageError, setLogoImageError] = useState(false);
+
   return (
     <div className="food-card" data-testid={props['data-testid']}>
       {/* Food Image */}
       <div style={{ position: 'relative', width: '100%', height: '233px' }}>
         <Image
-          src={meal.food_image}
+          src={foodImageError ? '/food-placeholder.png' : meal.food_image || '/food-placeholder.png'}
           alt={meal.food_name}
           fill
           className="food-card-image"
           style={{ objectFit: 'cover' }}
           sizes="357px"
           priority={false}
+          onError={() => setFoodImageError(true)}
         />
       </div>
 
@@ -66,12 +70,13 @@ export const MealCard: React.FC<MealCardProps> = ({
         <div className="food-card-restaurant">
           <div style={{ position: 'relative', width: '40px', height: '40px' }}>
             <Image
-              src={meal.restaurant_logo}
+              src={logoImageError ? '/restaurant-placeholder.png' : meal.restaurant_logo || '/restaurant-placeholder.png'}
               alt={meal.restaurant_name}
               fill
               className="food-card-restaurant-logo"
               style={{ objectFit: 'cover', borderRadius: '50%' }}
               sizes="40px"
+              onError={() => setLogoImageError(true)}
             />
           </div>
           <span className="food-card-restaurant-name" data-testid="restaurant-name">
