@@ -33,18 +33,19 @@ export const FeaturedMeals: React.FC<FeaturedMealsProps> = ({
   hasMore = false,
 }) => {
   // Split meals into rows of 4
-  const firstRow = meals.slice(0, 4);
-  const secondRow = meals.slice(4, 8);
+  const rows: Meal[][] = [];
+  for (let i = 0; i < meals.length; i += 4) {
+    rows.push(meals.slice(i, i + 4));
+  }
 
   return (
     <section className="food-featured">
       <h2 className="food-featured-title">Featured Meals</h2>
       
       <div className="food-featured-grid">
-        {/* First Row */}
-        {firstRow.length > 0 && (
-          <div className="food-featured-row">
-            {firstRow.map((meal) => (
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="food-featured-row">
+            {row.map((meal) => (
               <MealCard
                 key={meal.id}
                 meal={meal}
@@ -53,21 +54,7 @@ export const FeaturedMeals: React.FC<FeaturedMealsProps> = ({
               />
             ))}
           </div>
-        )}
-        
-        {/* Second Row */}
-        {secondRow.length > 0 && (
-          <div className="food-featured-row">
-            {secondRow.map((meal) => (
-              <MealCard
-                key={meal.id}
-                meal={meal}
-                onEdit={onEdit}
-                onDelete={onDelete}
-              />
-            ))}
-          </div>
-        )}
+        ))}
       </div>
       
       {/* Load More Button */}
