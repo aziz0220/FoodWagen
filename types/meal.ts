@@ -42,6 +42,9 @@ export interface Meal {
   /** URL to food image - REQUIRED field */
   food_image: string;
   
+  /** Price of the food item - OPTIONAL field */
+  food_price?: number;
+  
   /** Restaurant information - REQUIRED field */
   restaurant_name: string;
   

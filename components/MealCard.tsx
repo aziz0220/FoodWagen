@@ -1,7 +1,7 @@
 /**
  * Meal Card Component
  * Displays a single meal with image, rating, restaurant info, and actions
- * 357×463px as per Figma specs
+ * 357×463px as per Figma specs - Figma Design
  */
 
 import React, { useState } from 'react';
@@ -36,10 +36,11 @@ export const MealCard: React.FC<MealCardProps> = ({
 }) => {
   const [foodImageError, setFoodImageError] = useState(false);
   const [logoImageError, setLogoImageError] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="food-card" data-testid={props['data-testid']}>
-      {/* Food Image */}
+      {/* Food Image with Price Badge */}
       <div style={{ position: 'relative', width: '100%', height: '233px' }}>
         <Image
           src={foodImageError ? '/images/food/food-placeholder.png' : meal.food_image || '/images/food/food-placeholder.png'}
@@ -51,6 +52,36 @@ export const MealCard: React.FC<MealCardProps> = ({
           priority={false}
           onError={() => setFoodImageError(true)}
         />
+        
+        {/* Price Badge */}
+        {meal.food_price && (
+          <div className="food-card-price-badge">
+            ${typeof meal.food_price === 'number' ? meal.food_price.toFixed(2) : meal.food_price}
+          </div>
+        )}
+        
+        {/* 3-Dot Menu Button */}
+        <button 
+          className="food-card-menu-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Open menu"
+        >
+          <span>•</span>
+          <span>•</span>
+          <span>•</span>
+        </button>
+        
+        {/* Dropdown Menu */}
+        {menuOpen && (
+          <div className="food-card-dropdown">
+            <button onClick={() => { onEdit(meal); setMenuOpen(false); }}>
+              Edit
+            </button>
+            <button onClick={() => { onDelete(meal); setMenuOpen(false); }}>
+              Delete
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Card Content */}
