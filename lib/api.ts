@@ -5,14 +5,8 @@
 
 import { Meal, CreateMealData, UpdateMealData, ApiResponse } from '@/types/meal';
 
-/**
- * Base API URL - Update this with your actual A2SV API endpoint
- */
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://a2sv-backend.onrender.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://6852821e0594059b23cdd834.mockapi.io';
 
-/**
- * API Client class with all CRUD operations
- */
 class MealApiClient {
   private baseUrl: string;
 
@@ -20,12 +14,8 @@ class MealApiClient {
     this.baseUrl = baseUrl;
   }
 
-  /**
-   * Fetch all meals
-   * GET /meals
-   */
   async getAllMeals(): Promise<Meal[]> {
-    const response = await fetch(`${this.baseUrl}/meals`, {
+    const response = await fetch(`${this.baseUrl}/Food`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,15 +28,11 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data.data || data;
+    return data;
   }
 
-  /**
-   * Fetch a single meal by ID
-   * GET /meals/:id
-   */
   async getMealById(id: string): Promise<Meal> {
-    const response = await fetch(`${this.baseUrl}/meals/${id}`, {
+    const response = await fetch(`${this.baseUrl}/Food/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -59,15 +45,11 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data.data || data;
+    return data;
   }
 
-  /**
-   * Create a new meal
-   * POST /meals
-   */
   async createMeal(mealData: CreateMealData): Promise<Meal> {
-    const response = await fetch(`${this.baseUrl}/meals`, {
+    const response = await fetch(`${this.baseUrl}/Food`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -81,15 +63,11 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data.data || data;
+    return data;
   }
 
-  /**
-   * Update an existing meal
-   * PUT /meals/:id
-   */
   async updateMeal(id: string, mealData: UpdateMealData): Promise<Meal> {
-    const response = await fetch(`${this.baseUrl}/meals/${id}`, {
+    const response = await fetch(`${this.baseUrl}/Food/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -103,15 +81,11 @@ class MealApiClient {
     }
 
     const data = await response.json();
-    return data.data || data;
+    return data;
   }
 
-  /**
-   * Delete a meal
-   * DELETE /meals/:id
-   */
   async deleteMeal(id: string): Promise<void> {
-    const response = await fetch(`${this.baseUrl}/meals/${id}`, {
+    const response = await fetch(`${this.baseUrl}/Food/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
