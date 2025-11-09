@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans, Source_Sans_3 } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import "@/styles/food-design-system.css";
+import "@/styles/food-figma-design.css";
 import "./globals.css";
 
 const openSans = Open_Sans({
