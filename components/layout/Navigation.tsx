@@ -33,13 +33,28 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
         </div>
 
         {/* Add Meal Button */}
-        <button 
-          className="food-button food-button--primary food-button--nav"
+                </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <button
+          onClick={toggleTheme}
+          className="food-theme-toggle"
+          aria-label="Toggle theme"
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
+
+        <Button
+          variant="primary"
           onClick={onAddMealClick}
-          data-testid="add-meal-button"
+          className="food-button--nav"
         >
           Add Meal
-        </button>
+        </Button>
+      </div>
+    </div>
       </div>
     </nav>
   );
