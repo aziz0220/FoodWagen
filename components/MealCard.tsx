@@ -42,7 +42,7 @@ export const MealCard: React.FC<MealCardProps> = ({
       {/* Food Image */}
       <div style={{ position: 'relative', width: '100%', height: '233px' }}>
         <Image
-          src={foodImageError ? '/food-placeholder.png' : meal.food_image || '/food-placeholder.png'}
+          src={foodImageError ? '/images/food/food-placeholder.png' : meal.food_image || '/images/food/food-placeholder.png'}
           alt={meal.food_name}
           fill
           className="food-card-image"
@@ -70,7 +70,7 @@ export const MealCard: React.FC<MealCardProps> = ({
         <div className="food-card-restaurant">
           <div style={{ position: 'relative', width: '40px', height: '40px' }}>
             <Image
-              src={logoImageError ? '/restaurant-placeholder.png' : meal.restaurant_logo || '/restaurant-placeholder.png'}
+              src={logoImageError ? '/images/restaurants/restaurant-placeholder.png' : meal.restaurant_logo || '/images/restaurants/restaurant-placeholder.png'}
               alt={meal.restaurant_name}
               fill
               className="food-card-restaurant-logo"
