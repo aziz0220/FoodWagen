@@ -22,6 +22,9 @@ export interface MealCardProps {
     /** Callback when Delete button is clicked */
     onDelete: (meal: Meal) => void;
 
+    /** Whether this is a priority image (for LCP optimization) */
+    priority?: boolean;
+
     /** Test ID for testing */
     'data-testid'?: string;
 }
@@ -46,6 +49,7 @@ export const MealCard: React.FC<MealCardProps> = ({
                                                       meal,
                                                       onEdit,
                                                       onDelete,
+                                                      priority = false,
                                                       ...props
                                                   }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -85,7 +89,8 @@ export const MealCard: React.FC<MealCardProps> = ({
                     className="food-card-image"
                     style={{objectFit: 'cover'}}
                     sizes="357px"
-                    priority={false}
+                    priority={priority}
+                    loading={priority ? 'eager' : 'lazy'}
                     onError={(e) => {
                         // Fallback to placeholder on error
                         const target = e.target as HTMLImageElement;

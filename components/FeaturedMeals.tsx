@@ -45,12 +45,13 @@ export const FeaturedMeals: React.FC<FeaturedMealsProps> = ({
       <div className="food-featured-grid">
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="food-featured-row">
-            {row.map((meal) => (
+            {row.map((meal, mealIndex) => (
               <MealCard
                 key={meal.id}
                 meal={meal}
                 onEdit={onEdit}
                 onDelete={onDelete}
+                priority={rowIndex === 0 && mealIndex === 0}
               />
             ))}
           </div>
