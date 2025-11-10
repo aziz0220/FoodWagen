@@ -32,20 +32,7 @@ class MealApiClient {
   }
 
   private normalizeMealData(item: any): Meal {
-    // Get random placeholder from available images
-    const getRandomFoodPlaceholder = (): string => {
-      const placeholders = ['food-1.png', 'food-2.png', 'food-3.png', 'food-4.png', 'food-5.png', 'food-6.png', 'food-7.png', 'food-8.png'];
-      const random = placeholders[Math.floor(Math.random() * placeholders.length)];
-      return `/images/food/${random}`;
-    };
-
-    const getRandomRestaurantPlaceholder = (): string => {
-      const placeholders = ['restaurant-1.png', 'restaurant-2.png', 'restaurant-3.png', 'restaurant-4.png', 'restaurant-5.png', 'restaurant-6.png', 'restaurant-7.png', 'restaurant-8.png'];
-      const random = placeholders[Math.floor(Math.random() * placeholders.length)];
-      return `/images/restaurants/${random}`;
-    };
-
-    // Validate and fix image URLs
+    // Validate and fix image URLs - only accept external URLs
     const validateImageUrl = (url: string): string => {
       if (!url || url.trim() === '') return '';
 
@@ -85,7 +72,7 @@ class MealApiClient {
       return '';
     };
 
-    // Try to get valid URLs, use empty string if invalid
+    // Try to get valid URLs, return empty string if invalid (UI layer will handle placeholders)
     const foodImage = validateImageUrl(item.food_image || item.image || '');
     const restaurantLogo = validateLogoUrl(item.restaurant_logo || item.logo || '');
 
@@ -93,10 +80,10 @@ class MealApiClient {
       id: item.id,
       food_name: item.food_name || item.name || 'Unknown',
       food_rating: typeof item.food_rating === 'number' ? item.food_rating : (typeof item.rating === 'number' ? item.rating : 0),
-      food_image: foodImage || getRandomFoodPlaceholder(),
+      food_image: foodImage, // Empty string if invalid, UI layer handles placeholder
       food_price: item.food_price || item.Price || (8 + Math.random() * 32), // Random price 8-40 if not provided
       restaurant_name: item.restaurant_name || item.restaurantName || item.name || 'Unknown',
-      restaurant_logo: restaurantLogo || getRandomRestaurantPlaceholder(),
+      restaurant_logo: restaurantLogo, // Empty string if invalid, UI layer handles placeholder
       restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open Now'),
       createdAt: item.createdAt,
     };
