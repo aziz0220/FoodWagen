@@ -6,7 +6,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { Button } from '../Button';
 import { useTheme } from '@/lib/theme';
 
@@ -23,13 +22,12 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
         {/* Logo */}
         <div className="food-logo">
           <div className="food-logo-icon">
-            <Image
+            {/* Using img tag for SVG file (misnamed as .png) */}
+            <img
               src="/images/logo/logo-icon.png"
               alt="FoodWagen"
               width={28}
               height={30}
-              priority
-              unoptimized
             />
           </div>
           <span className="food-logo-text">
