@@ -22,9 +22,9 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
         {/* Logo */}
         <div className="food-logo">
           <div className="food-logo-icon">
-            {/* Using img tag for SVG file (misnamed as .png) */}
+            {/* Using img tag for SVG logo */}
             <img
-              src="/images/logo/logo-icon.png"
+              src="/images/logo/logo-icon.svg"
               alt="FoodWagen"
               width={28}
               height={30}
