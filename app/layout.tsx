@@ -32,6 +32,40 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Filter out browser extension errors in development */}
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                // Suppress browser extension errors
+                window.addEventListener('error', function(e) {
+                  if (e.message && (
+                    e.message.includes('message channel closed') ||
+                    e.message.includes('illegal path') ||
+                    e.message.includes('ResumeSwitcher') ||
+                    e.message.includes('autofillInstance')
+                  )) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return true;
+                  }
+                });
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && e.reason.message && (
+                    e.reason.message.includes('message channel closed') ||
+                    e.reason.message.includes('illegal path')
+                  )) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return true;
+                  }
+                });
+              `,
+            }}
+          />
+        )}
+      </head>
       <body className={`${openSans.variable} ${sourceSansPro.variable}`}>
         <ThemeProvider>
           <Providers>{children}</Providers>
