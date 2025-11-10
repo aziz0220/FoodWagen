@@ -9,9 +9,10 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    domains: ['images.unsplash.com', 'picsum.photos'],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    unoptimized: false,
+    unoptimized: true,
   },
 };
 

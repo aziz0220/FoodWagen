@@ -1,14 +1,14 @@
 /**
  * API Client for FoodWagen Application
- * Handles all HTTP requests to the A2SV API
+ * Handles all HTTP requests to the API
  */
 
-import { Meal, CreateMealData, UpdateMealData, ApiResponse } from '@/types/meal';
+import { Meal, CreateMealData, UpdateMealData} from '@/types/meal';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://6852821e0594059b23cdd834.mockapi.io';
 
 class MealApiClient {
-  private baseUrl: string;
+  private readonly baseUrl: string;
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
@@ -32,33 +32,71 @@ class MealApiClient {
   }
 
   private normalizeMealData(item: any): Meal {
+    // Get random placeholder from available images
+    const getRandomFoodPlaceholder = (): string => {
+      const placeholders = ['food-1.png', 'food-2.png', 'food-3.png', 'food-4.png', 'food-5.png', 'food-6.png', 'food-7.png', 'food-8.png'];
+      const random = placeholders[Math.floor(Math.random() * placeholders.length)];
+      return `/images/food/${random}`;
+    };
+
+    const getRandomRestaurantPlaceholder = (): string => {
+      const placeholders = ['restaurant-1.png', 'restaurant-2.png', 'restaurant-3.png', 'restaurant-4.png', 'restaurant-5.png', 'restaurant-6.png', 'restaurant-7.png', 'restaurant-8.png'];
+      const random = placeholders[Math.floor(Math.random() * placeholders.length)];
+      return `/images/restaurants/${random}`;
+    };
+
     // Validate and fix image URLs
     const validateImageUrl = (url: string): string => {
-      if (!url) return '/images/food/food-placeholder.png';
-      // If URL is invalid or points to non-image content, use placeholder
-      if (url.includes('pexels.com/photo/') || url.includes('netlify.app') || !url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-        return '/images/food/food-placeholder.png';
+      if (!url || url.trim() === '') return '';
+
+      // Check if it's a valid URL with common image hosting domains
+      try {
+        const urlObj = new URL(url);
+        const validDomains = ['unsplash.com', 'picsum.photos', 'images.pexels.com', 'cloudinary.com', 'imgur.com'];
+        const isValidDomain = validDomains.some(domain => urlObj.hostname.includes(domain));
+
+        // Accept if it's from a known image CDN or has image extension
+        if (isValidDomain || url.match(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i)) {
+          return url;
+        }
+      } catch (e) {
+        // Invalid URL
+        return '';
       }
-      return url;
+
+      return '';
     };
 
     const validateLogoUrl = (url: string): string => {
-      if (!url) return '/images/restaurants/restaurant-placeholder.png';
-      // If URL is invalid or points to non-image content, use placeholder
-      if (url.includes('pexels.com/photo/') || url.includes('netlify.app') || !url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-        return '/images/restaurants/restaurant-placeholder.png';
+      if (!url || url.trim() === '') return '';
+
+      try {
+        const urlObj = new URL(url);
+        const validDomains = ['unsplash.com', 'picsum.photos', 'images.pexels.com', 'cloudinary.com', 'imgur.com'];
+        const isValidDomain = validDomains.some(domain => urlObj.hostname.includes(domain));
+
+        if (isValidDomain || url.match(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i)) {
+          return url;
+        }
+      } catch (e) {
+        return '';
       }
-      return url;
+
+      return '';
     };
+
+    // Try to get valid URLs, use empty string if invalid
+    const foodImage = validateImageUrl(item.food_image || item.image || '');
+    const restaurantLogo = validateLogoUrl(item.restaurant_logo || item.logo || '');
 
     return {
       id: item.id,
       food_name: item.food_name || item.name || 'Unknown',
       food_rating: typeof item.food_rating === 'number' ? item.food_rating : (typeof item.rating === 'number' ? item.rating : 0),
-      food_image: validateImageUrl(item.food_image || item.image || item.avatar || ''),
-      food_price: item.food_price || (8 + Math.random() * 32), // Random price 8-40 if not provided
-      restaurant_name: item.restaurant_name || item.name || 'Unknown',
-      restaurant_logo: validateLogoUrl(item.restaurant_logo || item.logo || item.avatar || ''),
+      food_image: foodImage || getRandomFoodPlaceholder(),
+      food_price: item.food_price || item.Price || (8 + Math.random() * 32), // Random price 8-40 if not provided
+      restaurant_name: item.restaurant_name || item.restaurantName || item.name || 'Unknown',
+      restaurant_logo: restaurantLogo || getRandomRestaurantPlaceholder(),
       restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open Now'),
       createdAt: item.createdAt,
     };

@@ -8,7 +8,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
 import {Meal} from '@/types/meal';
 import {Badge} from './Badge';
-import {Button} from './Button';
 import {formatRating} from '@/lib/utils';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTag, faEllipsisVertical, faStar} from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +29,19 @@ export interface MealCardProps {
 /**
  * Meal Card component with image, details, and action buttons
  */
+// Get random placeholder functions
+const getRandomFoodPlaceholder = (): string => {
+    const placeholders = ['food-1.png', 'food-2.png', 'food-3.png', 'food-4.png', 'food-5.png', 'food-6.png', 'food-7.png', 'food-8.png'];
+    const random = placeholders[Math.floor(Math.random() * placeholders.length)];
+    return `/images/food/${random}`;
+};
+
+const getRandomRestaurantPlaceholder = (): string => {
+    const placeholders = ['restaurant-1.png', 'restaurant-2.png', 'restaurant-3.png', 'restaurant-4.png', 'restaurant-5.png', 'restaurant-6.png', 'restaurant-7.png', 'restaurant-8.png'];
+    const random = placeholders[Math.floor(Math.random() * placeholders.length)];
+    return `/images/restaurants/${random}`;
+};
+
 export const MealCard: React.FC<MealCardProps> = ({
                                                       meal,
                                                       onEdit,
@@ -40,6 +52,8 @@ export const MealCard: React.FC<MealCardProps> = ({
     const [logoImageError, setLogoImageError] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
+    const [foodPlaceholder] = useState(getRandomFoodPlaceholder());
+    const [logoPlaceholder] = useState(getRandomRestaurantPlaceholder());
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -63,7 +77,7 @@ export const MealCard: React.FC<MealCardProps> = ({
             {/* Food Image with Price Badge */}
             <div style={{position: 'relative', width: '100%', height: '233px'}}>
                 <Image
-                    src={foodImageError ? '/images/food/food-placeholder.png' : meal.food_image || '/images/food/food-placeholder.png'}
+                    src={foodImageError ? foodPlaceholder : (meal.food_image || foodPlaceholder)}
                     alt={meal.food_name}
                     fill
                     className="food-card-image"
@@ -76,8 +90,7 @@ export const MealCard: React.FC<MealCardProps> = ({
                 {/* Price Badge */}
                 {meal.food_price && (
                     <div className="food-card-price-badge">
-                        <FontAwesomeIcon
-                            icon={faTag}/> ${typeof meal.food_price === 'number' ? meal.food_price.toFixed(2) : meal.food_price}
+                        <FontAwesomeIcon icon={faTag} /> ${meal.food_price.toFixed(2)}
                     </div>
                 )}
 
@@ -100,7 +113,7 @@ export const MealCard: React.FC<MealCardProps> = ({
                                 flexShrink: 0
                             }}>
                                 <Image
-                                    src={logoImageError ? '/images/restaurants/restaurant-placeholder.png' : meal.restaurant_logo || '/images/restaurants/restaurant-placeholder.png'}
+                                    src={logoImageError ? logoPlaceholder : (meal.restaurant_logo || logoPlaceholder)}
                                     alt={meal.restaurant_name}
                                     fill
                                     className="food-card-restaurant-logo"
