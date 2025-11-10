@@ -524,6 +524,12 @@ body {
   color: var(--food-color-text-primary);
 }
 
+.food-card-left {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Adjust spacing as needed */
+}
+
 .food-card-rating {
   display: flex;
   align-items: center;
@@ -547,12 +553,6 @@ body {
   object-fit: cover;
 }
 
-.food-card-restaurant-name {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-sm);
-  font-weight: var(--food-weight-regular);
-  color: var(--food-color-text-placeholder);
-}
 
 .food-card-actions {
   display: flex;
@@ -565,14 +565,14 @@ body {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: #ffffff;
+  background: #f17228;
   border-radius: 8px;
   padding: 8px 16px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
-  color: #f17228;
+  color: #ffffff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 2;
 }
@@ -580,10 +580,6 @@ body {
 /* 3-Dot Menu Button */
 .food-card-menu-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
   background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 50%;
@@ -613,12 +609,10 @@ body {
 /* Dropdown Menu */
 .food-card-dropdown {
   position: absolute;
-  top: 60px;
-  right: 16px;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  /*overflow: hidden;*/
   z-index: 4;
   min-width: 120px;
 }
