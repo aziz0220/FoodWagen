@@ -53,12 +53,17 @@ export const EditMealModal: React.FC<EditMealModalProps> = ({
   // Populate form when meal changes
   useEffect(() => {
     if (meal) {
+      // Helper to check if URL is a local placeholder path
+      const isLocalPlaceholder = (url: string): boolean => {
+        return url.startsWith('/images/food/') || url.startsWith('/images/restaurants/');
+      };
+
       setFormData({
         food_name: meal.food_name,
         food_rating: meal.food_rating,
-        food_image: meal.food_image,
+        food_image: isLocalPlaceholder(meal.food_image || '') ? '' : meal.food_image,
         restaurant_name: meal.restaurant_name,
-        restaurant_logo: meal.restaurant_logo,
+        restaurant_logo: isLocalPlaceholder(meal.restaurant_logo || '') ? '' : meal.restaurant_logo,
         restaurant_status: meal.restaurant_status,
       });
       setErrors({});
