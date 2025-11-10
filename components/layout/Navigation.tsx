@@ -29,6 +29,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
               width={28}
               height={30}
               priority
+              unoptimized
             />
           </div>
           <span className="food-logo-text">
