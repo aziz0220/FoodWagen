@@ -48,12 +48,14 @@ export const MealCard: React.FC<MealCardProps> = ({
                                                       onDelete,
                                                       ...props
                                                   }) => {
-    const [foodImageError, setFoodImageError] = useState(false);
-    const [logoImageError, setLogoImageError] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const [foodPlaceholder] = useState(getRandomFoodPlaceholder());
     const [logoPlaceholder] = useState(getRandomRestaurantPlaceholder());
+    
+    // Determine the actual image source with fallback logic
+    const foodImageSrc = meal.food_image && meal.food_image.trim() !== '' ? meal.food_image : foodPlaceholder;
+    const logoImageSrc = meal.restaurant_logo && meal.restaurant_logo.trim() !== '' ? meal.restaurant_logo : logoPlaceholder;
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -77,20 +79,24 @@ export const MealCard: React.FC<MealCardProps> = ({
             {/* Food Image with Price Badge */}
             <div style={{position: 'relative', width: '100%', height: '233px'}}>
                 <Image
-                    src={foodImageError ? foodPlaceholder : (meal.food_image || foodPlaceholder)}
+                    src={foodImageSrc}
                     alt={meal.food_name}
                     fill
                     className="food-card-image"
                     style={{objectFit: 'cover'}}
                     sizes="357px"
                     priority={false}
-                    onError={() => setFoodImageError(true)}
+                    onError={(e) => {
+                        // Fallback to placeholder on error
+                        const target = e.target as HTMLImageElement;
+                        target.src = foodPlaceholder;
+                    }}
                 />
 
                 {/* Price Badge */}
                 {meal.food_price && (
                     <div className="food-card-price-badge">
-                        <FontAwesomeIcon icon={faTag} /> ${meal.food_price.toFixed(2)}
+                        <FontAwesomeIcon icon={faTag} /> ${typeof meal.food_price === 'number' ? meal.food_price.toFixed(2) : meal.food_price}
                     </div>
                 )}
 
@@ -113,13 +119,17 @@ export const MealCard: React.FC<MealCardProps> = ({
                                 flexShrink: 0
                             }}>
                                 <Image
-                                    src={logoImageError ? logoPlaceholder : (meal.restaurant_logo || logoPlaceholder)}
+                                    src={logoImageSrc}
                                     alt={meal.restaurant_name}
                                     fill
                                     className="food-card-restaurant-logo"
                                     style={{objectFit: 'cover'}}
                                     sizes="48px"
-                                    onError={() => setLogoImageError(true)}
+                                    onError={(e) => {
+                                        // Fallback to placeholder on error
+                                        const target = e.target as HTMLImageElement;
+                                        target.src = logoPlaceholder;
+                                    }}
                                 />
                             </div>
                         </div>
