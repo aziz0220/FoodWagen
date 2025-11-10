@@ -4,7 +4,7 @@
  * 357×463px as per Figma specs - Figma Design
  */
 
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
 import {Meal} from '@/types/meal';
 import {Badge} from './Badge';
@@ -39,6 +39,24 @@ export const MealCard: React.FC<MealCardProps> = ({
     const [foodImageError, setFoodImageError] = useState(false);
     const [logoImageError, setLogoImageError] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        };
+
+        if (menuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [menuOpen]);
 
     return (
         <div className="food-card" data-testid={props['data-testid']}>
@@ -71,14 +89,15 @@ export const MealCard: React.FC<MealCardProps> = ({
                 <div className="food-card-header">
                     {/* Left side: Logo and Title with Rating */}
                     <div className="food-card-left">
-                        {/* Restaurant Logo */}
+                        {/* Restaurant Logo - Rectangular with rounded corners */}
                         <div className="food-card-restaurant">
                             <div style={{
                                 position: 'relative',
-                                width: '40px',
-                                height: '40px',
-                                borderRadius: '50%',
-                                overflow: 'hidden'
+                                width: '48px',
+                                height: '48px',
+                                borderRadius: '8px',
+                                overflow: 'hidden',
+                                flexShrink: 0
                             }}>
                                 <Image
                                     src={logoImageError ? '/images/restaurants/restaurant-placeholder.png' : meal.restaurant_logo || '/images/restaurants/restaurant-placeholder.png'}
@@ -86,7 +105,7 @@ export const MealCard: React.FC<MealCardProps> = ({
                                     fill
                                     className="food-card-restaurant-logo"
                                     style={{objectFit: 'cover'}}
-                                    sizes="40px"
+                                    sizes="48px"
                                     onError={() => setLogoImageError(true)}
                                 />
                             </div>
@@ -100,31 +119,36 @@ export const MealCard: React.FC<MealCardProps> = ({
                                 </h6>
                             </div>
                             {/* Rating */}
-                            <div className="food-card-rating" data-testid="meal-rating">
-                                <FontAwesomeIcon icon={faStar} style={{color: "#FFB30E",}}/>
-                                <span>{formatRating(meal.food_rating)}</span>
+                                <div className="food-card-rating" data-testid="meal-rating">
+                                <FontAwesomeIcon icon={faStar} style={{width: '20px'}}/>       <span>{formatRating(meal.food_rating)}</span>
+
                             </div>
                         </div>
                     </div>
                     {/*3-Dot Menu Button*/}
-                    <div className="food-card-menu">
+                    <div className="food-card-menu" ref={menuRef}>
                         <button
                             className="food-card-menu-button"
-                            onClick={() => setMenuOpen(!menuOpen)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setMenuOpen(!menuOpen);
+                            }}
                             aria-label="Open menu"
                         >
-                            <FontAwesomeIcon icon={faEllipsisVertical}/>
+                            <FontAwesomeIcon icon={faEllipsisVertical} style={{width: '20px', height: '20px'}}/>
                         </button>
                         {/* Dropdown Menu */}
                         {menuOpen && (
                             <div className="food-card-dropdown">
-                                <button onClick={() => {
+                                <button onClick={(e) => {
+                                    e.stopPropagation();
                                     onEdit(meal);
                                     setMenuOpen(false);
                                 }}>
                                     Edit
                                 </button>
-                                <button onClick={() => {
+                                <button onClick={(e) => {
+                                    e.stopPropagation();
                                     onDelete(meal);
                                     setMenuOpen(false);
                                 }}>

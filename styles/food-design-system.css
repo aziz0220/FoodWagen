@@ -482,74 +482,104 @@ body {
    ============================================ */
 
 .food-card {
-  width: 357px;
-  height: 463px;
+  width: auto;
+  height: auto;
+  min-height: 463px;
   background: var(--food-color-white);
-  border-radius: var(--food-radius-lg);
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--food-shadow-sm);
-  transition: all var(--food-transition-fast);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .food-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--food-shadow-md);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .food-card-image {
   width: 100%;
   height: 233px;
   object-fit: cover;
+  display: block;
 }
 
 .food-card-content {
-  padding: var(--food-spacing-md);
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: var(--food-spacing-sm);
+  gap: 12px;
 }
 
 .food-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 8px;
 }
 
 .food-card-title {
   font-family: var(--food-font-secondary);
   font-size: var(--food-text-xl);
   font-weight: var(--food-weight-semibold);
-  line-height: 1.2;
+  line-height: 1.3;
   color: var(--food-color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.food-card-title h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .food-card-left {
     display: flex;
-    align-items: center;
-    gap: 12px; /* Adjust spacing as needed */
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.food-card-title-and-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .food-card-rating {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-family: var(--food-font-secondary);
-  font-size: var(--food-text-sm);
-  font-weight: var(--food-weight-semibold);
-  color: var(--food-color-primary);
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFB30E;
+}
+
+.food-card-rating svg {
+  width: 14px;
+  height: 14px;
 }
 
 .food-card-restaurant {
   display: flex;
-  align-items: center;
-  gap: var(--food-spacing-sm);
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .food-card-restaurant-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
@@ -567,54 +597,69 @@ body {
   left: 16px;
   background: #f17228;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 1;
+  font-size: 16px;
+  line-height: 1.2;
   color: #ffffff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.food-card-price-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* 3-Dot Menu Container */
+.food-card-menu {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 /* 3-Dot Menu Button */
 .food-card-menu-button {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 3;
-  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+  color: #424242;
 }
 
 .food-card-menu-button:hover {
-  background: #ffffff;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.05);
 }
 
-.food-card-menu-button span {
-  font-size: 20px;
-  line-height: 1;
-  color: #424242;
-  font-weight: 700;
+.food-card-menu-button svg {
+  width: 20px;
+  height: 20px;
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu - Positioned to the RIGHT of the button */
 .food-card-dropdown {
   position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
-  /*overflow: hidden;*/
-  z-index: 4;
-  min-width: 120px;
+  overflow: hidden;
+  z-index: 1000;
+  min-width: 140px;
 }
 
 .food-card-dropdown button {
@@ -625,9 +670,11 @@ body {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
+  font-weight: 400;
   color: #424242;
   cursor: pointer;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
 .food-card-dropdown button:hover {
@@ -635,7 +682,15 @@ body {
 }
 
 .food-card-dropdown button:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.food-card-dropdown button:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.food-card-dropdown button:last-child {
+  border-radius: 0 0 8px 8px;
 }
 
 /* ============================================
@@ -646,11 +701,11 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 6px 12px;
-  border-radius: var(--food-radius-full);
+  border-radius: 20px;
   font-family: var(--food-font-primary);
-  font-size: var(--food-text-xs);
-  font-weight: var(--food-weight-semibold);
-  line-height: 1;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .food-badge--open {
