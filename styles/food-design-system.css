@@ -495,7 +495,6 @@ body {
 .food-card {
   width: 357px;
   height: auto;
-  min-height: 463px;
   background: var(--food-color-white);
   border-radius: 12px;
   overflow: hidden;
