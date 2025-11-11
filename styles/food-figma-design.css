@@ -220,9 +220,37 @@
 
 .food-load-more {
   padding: 21px 48px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffba26 0%, #ffb30e 100%);
+  color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0px 5px 10px 0px rgba(255, 174, 0, 0.26), 0px 20px 40px 0px rgba(255, 174, 0, 0.29);
+}
+
+.food-load-more:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0px 7px 15px rgba(255, 174, 0, 0.3), 0px 25px 50px rgba(255, 174, 0, 0.35);
+}
+
+.food-load-more:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.food-load-more:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ===== FOOTER ===== */
