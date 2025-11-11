@@ -493,7 +493,7 @@ body {
    ============================================ */
 
 .food-card {
-  width: auto;
+  width: 357px;
   height: auto;
   min-height: 463px;
   background: var(--food-color-white);
@@ -504,6 +504,7 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .food-card:hover {
@@ -741,10 +742,10 @@ body {
 
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(357px, 1fr));
+  grid-template-columns: repeat(auto-fit, 357px);
   gap: 24px;
   width: 100%;
-  justify-items: center;
+  justify-content: center;
 }
 
 /* ============================================
@@ -885,6 +886,11 @@ body {
   .food-card {
     width: 100%;
     max-width: 357px;
+  }
+  
+  .food-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
   }
   
   .food-text-hero {
