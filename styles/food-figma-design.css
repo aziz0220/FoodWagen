@@ -213,8 +213,10 @@
 
 .food-featured-row {
   display: grid;
-  grid-template-columns: repeat(4, 357px);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 357px));
+  gap: 24px;
+  justify-content: center;
+  max-width: 100%;
 }
 
 .food-load-more {
@@ -525,9 +527,10 @@
   }
 
   .food-featured-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 357px));
     padding: 0 32px;
-    gap: 20px;
+    gap: 24px;
+    justify-content: center;
   }
 
   .food-footer-content {
@@ -637,7 +640,8 @@
   .food-featured-row {
     grid-template-columns: 1fr;
     padding: 0 20px;
-    gap: 16px;
+    gap: 24px;
+    justify-items: center;
   }
 
   .food-featured-grid {
