@@ -81,7 +81,7 @@ export const MealCard: React.FC<MealCardProps> = ({
     return (
         <div className="food-card" data-testid={props['data-testid']}>
             {/* Food Image with Price Badge */}
-            <div style={{position: 'relative', width: '100%', height: '233px'}}>
+            <div style={{position: 'relative', width: '100%', height: '233px', overflow: 'hidden', borderRadius: '12px 12px 0 0'}}>
                 <Image
                     src={foodImageSrc}
                     alt={meal.food_name}
