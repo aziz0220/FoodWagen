@@ -179,7 +179,7 @@ export const MealCard: React.FC<MealCardProps> = ({
                                     e.stopPropagation();
                                     onDelete(meal);
                                     setMenuOpen(false);
-                                }}>
+                                }} style={{ color: 'red' }}>
                                     Delete
                                 </button>
                             </div>
