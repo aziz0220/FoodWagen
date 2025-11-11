@@ -8,7 +8,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTag, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 
 export interface HeroProps {
@@ -76,7 +76,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
               </div>
             </div>
             <button 
-              className="food-button food-button--primary food-button--search"
+              className="food-button-find food-button-find--primary food-button-find--search"
               onClick={handleSearch}
             >
                 <FontAwesomeIcon icon={faMagnifyingGlass} />

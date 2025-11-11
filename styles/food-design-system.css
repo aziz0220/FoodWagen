@@ -1,898 +1,955 @@
-/**
- * FoodWagen Custom CSS Design System
- * Converted from Figma specifications - NO TAILWIND
- * All class names use food- prefix as per challenge requirements
- */
-
-/* ============================================
-   CSS RESET & BASE STYLES
-   ============================================ */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: var(--food-color-text-primary);
-  background-color: var(--food-color-background);
-  line-height: 1.5;
-}
-
-/* ============================================
-   CSS VARIABLES - Design Tokens
-   ============================================ */
-
-:root {
-  /* Colors - Primary */
-  --food-color-primary: #FF9A0E;
-  --food-color-primary-light: #FFB648;
-  --food-color-primary-dark: #FFAE00;
-  --food-color-accent: #FFBA26;
-  
-  /* Colors - Neutral */
-  --food-color-white: #FFFFFF;
-  --food-color-black: #000000;
-  --food-color-gray-50: #FAFAFA;
-  --food-color-gray-100: #F5F5F5;
-  --food-color-gray-200: #EEEEEE;
-  --food-color-gray-300: #E0E0E0;
-  --food-color-gray-400: #BDBDBD;
-  --food-color-gray-500: #9E9E9E;
-  --food-color-gray-600: #757575;
-  --food-color-gray-700: #616161;
-  --food-color-gray-800: #424242;
-  --food-color-gray-900: #212121;
-  
-  /* Colors - Semantic */
-  --food-color-error: #FF6868;
-  --food-color-success: #4CAF50;
-  --food-color-warning: #FFC107;
-  
-  /* Colors - Blue Gray */
-  --food-color-blue-gray-300: #B6BAC3;
-  
-  /* Text Colors */
-  --food-color-text-primary: #000000;
-  --food-color-text-secondary: #424242;
-  --food-color-text-placeholder: #9E9E9E;
-  --food-color-text-white: #FFFFFF;
-  
-  /* Background Colors */
-  --food-color-background: #FFFFFF;
-  --food-color-background-gray: #F5F5F5;
-  --food-color-overlay: rgba(198, 194, 194, 0.52);
-  
-  /* Spacing */
-  --food-spacing-xs: 8px;
-  --food-spacing-sm: 16px;
-  --food-spacing-md: 24px;
-  --food-spacing-lg: 32px;
-  --food-spacing-xl: 48px;
-  --food-spacing-2xl: 64px;
-  --food-spacing-3xl: 88px;
-  
-  /* Border Radius */
-  --food-radius-sm: 8px;
-  --food-radius-md: 14px;
-  --food-radius-lg: 24px;
-  --food-radius-full: 9999px;
-  
-  /* Shadows */
-  --food-shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  --food-shadow-md: 0px 2px 25px rgba(0, 0, 0, 0.15);
-  --food-shadow-button: 0px 5px 10px rgba(255, 174, 0, 0.26), 0px 20px 40px rgba(255, 174, 0, 0.29);
-  --food-shadow-hero: 0px 4px 250px rgba(255, 174, 0, 0.47);
-  
-  /* Typography - Font Families */
-  --food-font-primary: 'Open Sans', sans-serif;
-  --food-font-secondary: 'Source Sans Pro', sans-serif;
-  
-  /* Typography - Font Sizes */
-  --food-text-xs: 14px;
-  --food-text-sm: 16px;
-  --food-text-base: 18px;
-  --food-text-lg: 20px;
-  --food-text-xl: 24px;
-  --food-text-2xl: 32px;
-  --food-text-3xl: 40px;
-  --food-text-4xl: 48px;
-  --food-text-5xl: 64px;
-  --food-text-6xl: 88px;
-  
-  /* Typography - Font Weights */
-  --food-weight-regular: 400;
-  --food-weight-semibold: 600;
-  --food-weight-bold: 700;
-  
-  /* Transitions */
-  --food-transition-fast: 150ms ease-out;
-  --food-transition-normal: 300ms ease-out;
-  
-  /* Container Widths */
-  --food-container-max: 1920px;
-  --food-content-max: 1518px;
-  --food-desktop-padding: 220px;
-}
-
-/* ============================================
-   LAYOUT COMPONENTS
-   ============================================ */
-
-.food-container {
-  width: 100%;
-  max-width: var(--food-container-max);
-  margin: 0 auto;
-}
-
-.food-content {
-  width: 100%;
-  max-width: var(--food-content-max);
-  margin: 0 auto;
-  padding: 0 var(--food-spacing-md);
-}
-
-.food-content--desktop {
-  padding: 0 var(--food-desktop-padding);
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-/* ============================================
-   TYPOGRAPHY CLASSES
-   ============================================ */
-
-.food-text-hero {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-6xl);
-  font-weight: var(--food-weight-bold);
-  line-height: 1.1;
-  color: var(--food-color-text-primary);
-}
-
-.food-text-title {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-3xl);
-  font-weight: var(--food-weight-bold);
-  line-height: 1;
-  color: var(--food-color-primary);
-}
-
-.food-text-heading {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-2xl);
-  font-weight: var(--food-weight-bold);
-  line-height: 1.2;
-}
-
-.food-text-body {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.4;
-  color: var(--food-color-text-placeholder);
-}
-
-.food-text-label {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.4;
-  color: var(--food-color-text-placeholder);
-}
-
-.food-text-input {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-lg);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.2;
-  color: var(--food-color-text-placeholder);
-}
-
-.food-text-input--filled {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-lg);
-  font-weight: var(--food-weight-semibold);
-  line-height: 1.2;
-  color: var(--food-color-text-secondary);
-}
-
-.food-text-button {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-bold);
-  line-height: 1;
-}
-
-.food-text-error {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.4;
-  color: var(--food-color-error);
-}
-
-.food-text-card-title {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-xl);
-  font-weight: var(--food-weight-semibold);
-  line-height: 1.2;
-  color: var(--food-color-text-primary);
-}
-
-.food-text-card-subtitle {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-sm);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.5;
-  color: var(--food-color-text-placeholder);
-}
-
-/* ============================================
-   BUTTON COMPONENTS
-   ============================================ */
-
-.food-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 21px 48px;
-  border: none;
-  border-radius: var(--food-radius-md);
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-bold);
-  line-height: 1;
-  cursor: pointer;
-  transition: all var(--food-transition-fast);
-  text-decoration: none;
-  outline: none;
-}
-
-.food-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.food-button--primary {
-  background: linear-gradient(135deg, var(--food-color-primary) 0%, var(--food-color-primary-dark) 100%);
-  color: var(--food-color-text-white);
-  box-shadow: var(--food-shadow-button);
-}
-
-.food-button--primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0px 7px 15px rgba(255, 174, 0, 0.3), 0px 25px 50px rgba(255, 174, 0, 0.35);
-}
-
-.food-button--primary:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.food-button--secondary {
-  background: transparent;
-  color: var(--food-color-text-primary);
-  border: 1px solid var(--food-color-accent);
-}
-
-.food-button--secondary:hover:not(:disabled) {
-  background: rgba(255, 186, 38, 0.1);
-  border-color: var(--food-color-primary);
-}
-
-.food-button--modal {
-  width: 301px;
-  height: 60px;
-  padding: 21px 48px;
-}
-
-/* ============================================
-   INPUT COMPONENTS
-   ============================================ */
-
-.food-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--food-spacing-xs);
-  width: 100%;
-}
-
-.food-input-label {
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.4;
-  color: var(--food-color-text-placeholder);
-}
-
-.food-input {
-  width: 612px;
-  height: 60px;
-  padding: 7px 0 8px 16px;
-  background: var(--food-color-background-gray);
-  border: none;
-  border-radius: var(--food-radius-sm);
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-lg);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.2;
-  color: var(--food-color-text-placeholder);
-  outline: none;
-  transition: all var(--food-transition-fast);
-}
-
-.food-input:focus {
-  background: var(--food-color-white);
-  box-shadow: 0 0 0 2px var(--food-color-primary);
-}
-
-.food-input::placeholder {
-  color: var(--food-color-text-placeholder);
-}
-
-.food-input--error {
-  border: 1px solid var(--food-color-error);
-}
-
-.food-input--filled {
-  font-family: var(--food-font-secondary);
-  font-weight: var(--food-weight-semibold);
-  color: var(--food-color-text-secondary);
-}
-
-.food-dropdown {
-  width: 612px;
-  height: 60px;
-  padding: 10px 14px;
-  background: var(--food-color-background-gray);
-  border: 1px solid var(--food-color-blue-gray-300);
-  border-radius: var(--food-radius-sm);
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-lg);
-  font-weight: var(--food-weight-semibold);
-  line-height: 1.2;
-  color: var(--food-color-text-secondary);
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  background-image: url('/icons/chevron-down.svg');
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 20px 20px;
-  transition: all var(--food-transition-fast);
-}
-
-.food-dropdown:focus {
-  border-color: var(--food-color-primary);
-}
-
-.food-search-input {
-  width: 100%;
-  height: 56px;
-  padding: 0 16px 0 48px;
-  background: var(--food-color-white);
-  border: 1px solid var(--food-color-gray-300);
-  border-radius: var(--food-radius-sm);
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-sm);
-  outline: none;
-  transition: all var(--food-transition-fast);
-}
-
-.food-search-input:focus {
-  border-color: var(--food-color-primary);
-  box-shadow: 0 0 0 2px rgba(255, 154, 14, 0.1);
-}
-
-/* ============================================
-   MODAL COMPONENTS
-   ============================================ */
-
-.food-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--food-color-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: foodFadeIn var(--food-transition-normal);
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.food-modal {
-  background: var(--food-color-white);
-  border-radius: var(--food-radius-lg);
-  box-shadow: var(--food-shadow-md);
-  padding: 10px;
-  animation: foodSlideUp var(--food-transition-normal);
-  max-width: 95vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  margin: auto;
-}
-
-.food-modal--add,
-.food-modal--edit {
-  width: min(934px, 95vw);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.food-modal--add {
-  min-height: 840px;
-  height: auto;
-}
-
-.food-modal--edit {
-  min-height: 1132px;
-  height: auto;
-}
-
-.food-modal--delete {
-  width: min(712px, 95vw);
-  min-height: 325px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.food-modal-title {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-3xl);
-  font-weight: var(--food-weight-bold);
-  line-height: 1;
-  color: var(--food-color-primary);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.food-modal-form {
-  width: min(612px, 90%);
-  display: flex;
-  flex-direction: column;
-  gap: var(--food-spacing-md);
-}
-
-.food-modal-message {
-  width: min(596px, 90%);
-  font-family: var(--food-font-primary);
-  font-size: var(--food-text-base);
-  font-weight: var(--food-weight-regular);
-  line-height: 1.4;
-  color: var(--food-color-text-placeholder);
-  text-align: center;
-  white-space: pre-wrap;
-  margin-top: 31px;
-  margin-bottom: var(--food-spacing-md);
-}
-
-.food-modal-buttons {
-  display: flex;
-  gap: 10px;
-  width: min(612px, 90%);
-  margin-top: auto;
-}
-
-/* ============================================
-   CARD COMPONENTS
-   ============================================ */
-
-.food-card {
-  width: 357px;
-  height: auto;
-  background: var(--food-color-white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-
-.food-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.food-card-image {
-  width: 100%;
-  height: 233px;
-  object-fit: cover;
-  display: block;
-}
-
-.food-card-content {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.food-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.food-card-title {
-  font-family: var(--food-font-secondary);
-  font-size: var(--food-text-xl);
-  font-weight: var(--food-weight-semibold);
-  line-height: 1.3;
-  color: var(--food-color-text-primary);
-  margin: 0;
-  padding: 0;
-  flex: 1;
-  min-width: 0;
-}
-
-.food-card-title h6 {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-.food-card-left {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    flex: 1;
-    min-width: 0;
-}
-
-.food-card-title-and-rating {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  min-width: 0;
-}
-
-.food-card-rating {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--food-font-secondary);
-  font-size: 16px;
-  font-weight: 600;
-  color: #FFB30E;
-}
-
-.food-card-rating svg {
-  width: 14px;
-  height: 14px;
-}
-
-.food-card-restaurant {
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-
-.food-card-restaurant-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-
-.food-card-actions {
-  display: flex;
-  gap: var(--food-spacing-xs);
-  margin-top: var(--food-spacing-sm);
-}
-
-/* Price Badge on Image */
-.food-card-price-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: #f17228;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.2;
-  color: #ffffff;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.food-card-price-badge svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* 3-Dot Menu Container */
-.food-card-menu {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-
-/* 3-Dot Menu Button */
-.food-card-menu-button {
-  background: transparent;
-  border: none;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: #424242;
-}
-
-.food-card-menu-button:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.food-card-menu-button svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Dropdown Menu - Positioned to the RIGHT of the button */
-.food-card-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 4px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  z-index: 1000;
-  min-width: 140px;
-}
-
-.food-card-dropdown button {
-  width: 100%;
-  padding: 12px 16px;
-  border: none;
-  background: transparent;
-  text-align: left;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #424242;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  white-space: nowrap;
-}
-
-.food-card-dropdown button:hover {
-  background: #f5f5f5;
-}
-
-.food-card-dropdown button:not(:last-child) {
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.food-card-dropdown button:first-child {
-  border-radius: 8px 8px 0 0;
-}
-
-.food-card-dropdown button:last-child {
-  border-radius: 0 0 8px 8px;
-}
-
-/* ============================================
-   BADGE COMPONENT
-   ============================================ */
-
-.food-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-family: var(--food-font-primary);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.food-badge--open {
-  background: rgba(76, 175, 80, 0.1);
-  color: var(--food-color-success);
-}
-
-.food-badge--closed {
-  background: rgba(255, 104, 104, 0.1);
-  color: var(--food-color-error);
-}
-
-/* ============================================
-   GRID LAYOUTS
-   ============================================ */
-
-.food-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 357px);
-  gap: 24px;
-  width: 100%;
-  justify-content: center;
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-
-@keyframes foodFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes foodSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-
-.food-flex {
-  display: flex;
-}
-
-.food-flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.food-flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.food-hidden {
-  display: none;
-}
-
-.food-visible {
-  display: block;
-}
-
-/* ============================================
-   RESPONSIVE BREAKPOINTS
-   ============================================ */
-
-@media (max-width: 1536px) {
-  .food-content--desktop {
-    padding: 0 var(--food-spacing-3xl);
-  }
-}
-
-@media (max-width: 1200px) {
-  .food-content--desktop {
-    padding: 0 var(--food-spacing-xl);
-  }
-  
-  .food-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .food-card {
-    width: 100%;
-    max-width: 357px;
-  }
-}
-
-@media (max-width: 992px) {
-  .food-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .food-content--desktop {
-    padding: 0 var(--food-spacing-md);
-  }
-  
-  .food-grid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-  
-  .food-card {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .food-modal--add,
-  .food-modal--edit,
-  .food-modal--delete {
-    width: 90vw;
-    max-width: 500px;
-    min-height: auto;
-  }
-  
-  .food-input,
-  .food-dropdown,
-  .food-modal-form,
-  .food-modal-buttons,
-  .food-modal-message {
-    width: 100%;
-  }
-  
-  .food-button--modal {
-    width: 100%;
-    flex: 1;
-  }
-  
-  .food-text-hero {
-    font-size: var(--food-text-4xl);
-  }
-  
-  .food-hero-search {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .food-nav-content {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .food-card {
-    width: 100%;
-    max-width: 357px;
-  }
-  
-  .food-grid {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
-  }
-  
-  .food-text-hero {
-    font-size: var(--food-text-2xl);
-  }
-}
+    /**
+     * FoodWagen Custom CSS Design System
+     * Converted from Figma specifications - NO TAILWIND
+     * All class names use food- prefix as per challenge requirements
+     */
+
+    /* ============================================
+       CSS RESET & BASE STYLES
+       ============================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--food-color-text-primary);
+      background-color: var(--food-color-background);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       CSS VARIABLES - Design Tokens
+       ============================================ */
+
+    :root {
+      /* Colors - Primary */
+      --food-color-primary: #FF9A0E;
+      --food-color-primary-light: #FFB648;
+      --food-color-primary-dark: #FFAE00;
+      --food-color-accent: #FFBA26;
+
+      /* Colors - Neutral */
+      --food-color-white: #FFFFFF;
+      --food-color-black: #000000;
+      --food-color-gray-50: #FAFAFA;
+      --food-color-gray-100: #F5F5F5;
+      --food-color-gray-200: #EEEEEE;
+      --food-color-gray-300: #E0E0E0;
+      --food-color-gray-400: #BDBDBD;
+      --food-color-gray-500: #9E9E9E;
+      --food-color-gray-600: #757575;
+      --food-color-gray-700: #616161;
+      --food-color-gray-800: #424242;
+      --food-color-gray-900: #212121;
+
+
+        --food-color-find-primary: #FF7A7A;
+        --food-color-find-primary-dark: #F65900;
+        --food-color-find-text-white: #FFFFFF;
+        --food-find-radius-md: 8px;
+        --food-find-shadow-button: 0px 4px 10px rgba(246, 89, 0, 0.25);
+
+      /* Colors - Semantic */
+      --food-color-error: #FF6868;
+      --food-color-success: #4CAF50;
+      --food-color-warning: #FFC107;
+
+      /* Colors - Blue Gray */
+      --food-color-blue-gray-300: #B6BAC3;
+
+      /* Text Colors */
+      --food-color-text-primary: #000000;
+      --food-color-text-secondary: #424242;
+      --food-color-text-placeholder: #9E9E9E;
+      --food-color-text-white: #FFFFFF;
+
+      /* Background Colors */
+      --food-color-background: #FFFFFF;
+      --food-color-background-gray: #F5F5F5;
+      --food-color-overlay: rgba(198, 194, 194, 0.52);
+
+      /* Spacing */
+      --food-spacing-xs: 8px;
+      --food-spacing-sm: 16px;
+      --food-spacing-md: 24px;
+      --food-spacing-lg: 32px;
+      --food-spacing-xl: 48px;
+      --food-spacing-2xl: 64px;
+      --food-spacing-3xl: 88px;
+
+      /* Border Radius */
+      --food-radius-sm: 8px;
+      --food-radius-md: 14px;
+      --food-radius-lg: 24px;
+      --food-radius-full: 9999px;
+
+      /* Shadows */
+      --food-shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      --food-shadow-md: 0px 2px 25px rgba(0, 0, 0, 0.15);
+      --food-shadow-button: 0px 5px 10px rgba(255, 174, 0, 0.26), 0px 20px 40px rgba(255, 174, 0, 0.29);
+      --food-shadow-hero: 0px 4px 250px rgba(255, 174, 0, 0.47);
+
+      /* Typography - Font Families */
+      --food-font-primary: 'Open Sans', sans-serif;
+      --food-font-secondary: 'Source Sans Pro', sans-serif;
+
+      /* Typography - Font Sizes */
+      --food-text-xs: 14px;
+      --food-text-sm: 16px;
+      --food-text-base: 18px;
+      --food-text-lg: 20px;
+      --food-text-xl: 24px;
+      --food-text-2xl: 32px;
+      --food-text-3xl: 40px;
+      --food-text-4xl: 48px;
+      --food-text-5xl: 64px;
+      --food-text-6xl: 88px;
+
+      /* Typography - Font Weights */
+      --food-weight-regular: 400;
+      --food-weight-semibold: 600;
+      --food-weight-bold: 700;
+
+      /* Transitions */
+      --food-transition-fast: 150ms ease-out;
+      --food-transition-normal: 300ms ease-out;
+
+      /* Container Widths */
+      --food-container-max: 1920px;
+      --food-content-max: 1518px;
+      --food-desktop-padding: 220px;
+    }
+
+    /* ============================================
+       LAYOUT COMPONENTS
+       ============================================ */
+
+    .food-container {
+      width: 100%;
+      max-width: var(--food-container-max);
+      margin: 0 auto;
+    }
+
+    .food-content {
+      width: 100%;
+      max-width: var(--food-content-max);
+      margin: 0 auto;
+      padding: 0 var(--food-spacing-md);
+    }
+
+    .food-content--desktop {
+      padding: 0 var(--food-desktop-padding);
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       TYPOGRAPHY CLASSES
+       ============================================ */
+
+    .food-text-hero {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-6xl);
+      font-weight: var(--food-weight-bold);
+      line-height: 1.1;
+      color: var(--food-color-text-primary);
+    }
+
+    .food-text-title {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-3xl);
+      font-weight: var(--food-weight-bold);
+      line-height: 1;
+      color: var(--food-color-primary);
+    }
+
+    .food-text-heading {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-2xl);
+      font-weight: var(--food-weight-bold);
+      line-height: 1.2;
+    }
+
+    .food-text-body {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.4;
+      color: var(--food-color-text-placeholder);
+    }
+
+    .food-text-label {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.4;
+      color: var(--food-color-text-placeholder);
+    }
+
+    .food-text-input {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-lg);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.2;
+      color: var(--food-color-text-placeholder);
+    }
+
+    .food-text-input--filled {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-lg);
+      font-weight: var(--food-weight-semibold);
+      line-height: 1.2;
+      color: var(--food-color-text-secondary);
+    }
+
+    .food-text-button {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-bold);
+      line-height: 1;
+    }
+
+    .food-text-error {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.4;
+      color: var(--food-color-error);
+    }
+
+    .food-text-card-title {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-xl);
+      font-weight: var(--food-weight-semibold);
+      line-height: 1.2;
+      color: var(--food-color-text-primary);
+    }
+
+    .food-text-card-subtitle {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-sm);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.5;
+      color: var(--food-color-text-placeholder);
+    }
+
+    /* ============================================
+       BUTTON COMPONENTS
+       ============================================ */
+
+    .food-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 21px 48px;
+      border: none;
+      border-radius: var(--food-radius-md);
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-bold);
+      line-height: 1;
+      cursor: pointer;
+      transition: all var(--food-transition-fast);
+      text-decoration: none;
+      outline: none;
+    }
+
+    .food-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .food-button--primary {
+      background: linear-gradient(135deg, var(--food-color-primary) 0%, var(--food-color-primary-dark) 100%);
+      color: var(--food-color-text-white);
+      box-shadow: var(--food-shadow-button);
+    }
+
+    .food-button--primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0px 7px 15px rgba(255, 174, 0, 0.3), 0px 25px 50px rgba(255, 174, 0, 0.35);
+    }
+
+    .food-button--primary:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    /* Find Button Base */
+    .food-button-find {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 21px 48px;
+      border: none;
+      border-radius: var(--food-radius-md);
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-bold);
+      line-height: 1;
+      cursor: pointer;
+      transition: all var(--food-transition-fast);
+      text-decoration: none;
+      outline: none;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .food-button-find:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .food-button-find--primary {
+      background: linear-gradient(135deg, var(--food-color-find-primary) 0%, var(--food-color-find-primary-dark) 100%);
+      color: var(--food-color-find-text-white);
+      box-shadow: var(--food-find-shadow-button);
+    }
+
+    .food-button-find--primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 15px rgba(246, 89, 0, 0.3), 0px 20px 40px rgba(246, 89, 0, 0.35);
+    }
+
+    .food-button-find--primary:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .food-button-find--search {
+      padding: 21px 48px;
+    }
+
+    .food-button-find--search svg {
+      width: 18px;
+      height: 18px;
+    }
+
+
+    .food-button--secondary {
+      background: transparent;
+      color: var(--food-color-text-primary);
+      border: 1px solid var(--food-color-accent);
+    }
+
+    .food-button--secondary:hover:not(:disabled) {
+      background: rgba(255, 186, 38, 0.1);
+      border-color: var(--food-color-primary);
+    }
+
+    .food-button--modal {
+      width: 301px;
+      height: 60px;
+      padding: 21px 48px;
+    }
+
+    /* ============================================
+       INPUT COMPONENTS
+       ============================================ */
+
+    .food-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--food-spacing-xs);
+      width: 100%;
+    }
+
+    .food-input-label {
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.4;
+      color: var(--food-color-text-placeholder);
+    }
+
+    .food-input {
+      width: 612px;
+      height: 60px;
+      padding: 7px 0 8px 16px;
+      background: var(--food-color-background-gray);
+      border: none;
+      border-radius: var(--food-radius-sm);
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-lg);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.2;
+      color: var(--food-color-text-placeholder);
+      outline: none;
+      transition: all var(--food-transition-fast);
+    }
+
+    .food-input:focus {
+      background: var(--food-color-white);
+      box-shadow: 0 0 0 2px var(--food-color-primary);
+    }
+
+    .food-input::placeholder {
+      color: var(--food-color-text-placeholder);
+    }
+
+    .food-input--error {
+      border: 1px solid var(--food-color-error);
+    }
+
+    .food-input--filled {
+      font-family: var(--food-font-secondary);
+      font-weight: var(--food-weight-semibold);
+      color: var(--food-color-text-secondary);
+    }
+
+    .food-dropdown {
+      width: 612px;
+      height: 60px;
+      padding: 10px 14px;
+      background: var(--food-color-background-gray);
+      border: 1px solid var(--food-color-blue-gray-300);
+      border-radius: var(--food-radius-sm);
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-lg);
+      font-weight: var(--food-weight-semibold);
+      line-height: 1.2;
+      color: var(--food-color-text-secondary);
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      background-image: url('/icons/chevron-down.svg');
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 20px 20px;
+      transition: all var(--food-transition-fast);
+    }
+
+    .food-dropdown:focus {
+      border-color: var(--food-color-primary);
+    }
+
+    .food-search-input {
+      width: 100%;
+      height: 56px;
+      padding: 0 16px 0 48px;
+      background: var(--food-color-white);
+      border: 1px solid var(--food-color-gray-300);
+      border-radius: var(--food-radius-sm);
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-sm);
+      outline: none;
+      transition: all var(--food-transition-fast);
+    }
+
+    .food-search-input:focus {
+      border-color: var(--food-color-primary);
+      box-shadow: 0 0 0 2px rgba(255, 154, 14, 0.1);
+    }
+
+    /* ============================================
+       MODAL COMPONENTS
+       ============================================ */
+
+    .food-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--food-color-overlay);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: foodFadeIn var(--food-transition-normal);
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .food-modal {
+      background: var(--food-color-white);
+      border-radius: var(--food-radius-lg);
+      box-shadow: var(--food-shadow-md);
+      padding: 10px;
+      animation: foodSlideUp var(--food-transition-normal);
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      margin: auto;
+    }
+
+    .food-modal--add,
+    .food-modal--edit {
+      width: min(934px, 95vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .food-modal--add {
+      min-height: 840px;
+      height: auto;
+    }
+
+    .food-modal--edit {
+      min-height: 1132px;
+      height: auto;
+    }
+
+    .food-modal--delete {
+      width: min(712px, 95vw);
+      min-height: 325px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .food-modal-title {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-3xl);
+      font-weight: var(--food-weight-bold);
+      line-height: 1;
+      color: var(--food-color-primary);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .food-modal-form {
+      width: min(612px, 90%);
+      display: flex;
+      flex-direction: column;
+      gap: var(--food-spacing-md);
+    }
+
+    .food-modal-message {
+      width: min(596px, 90%);
+      font-family: var(--food-font-primary);
+      font-size: var(--food-text-base);
+      font-weight: var(--food-weight-regular);
+      line-height: 1.4;
+      color: var(--food-color-text-placeholder);
+      text-align: center;
+      white-space: pre-wrap;
+      margin-top: 31px;
+      margin-bottom: var(--food-spacing-md);
+    }
+
+    .food-modal-buttons {
+      display: flex;
+      gap: 10px;
+      width: min(612px, 90%);
+      margin-top: auto;
+    }
+
+    /* ============================================
+       CARD COMPONENTS
+       ============================================ */
+
+    .food-card {
+      width: 357px;
+      height: auto;
+      background: var(--food-color-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .food-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .food-card-image {
+      width: 100%;
+      height: 233px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .food-card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .food-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .food-card-title {
+      font-family: var(--food-font-secondary);
+      font-size: var(--food-text-xl);
+      font-weight: var(--food-weight-semibold);
+      line-height: 1.3;
+      color: var(--food-color-text-primary);
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .food-card-title h6 {
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .food-card-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .food-card-title-and-rating {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .food-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--food-font-secondary);
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFB30E;
+    }
+
+    .food-card-rating svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .food-card-restaurant {
+      display: flex;
+      align-items: flex-start;
+      flex-shrink: 0;
+    }
+
+    .food-card-restaurant-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+
+    .food-card-actions {
+      display: flex;
+      gap: var(--food-spacing-xs);
+      margin-top: var(--food-spacing-sm);
+    }
+
+    /* Price Badge on Image */
+    .food-card-price-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: #f17228;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.2;
+      color: #ffffff;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .food-card-price-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* 3-Dot Menu Container */
+    .food-card-menu {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      flex-shrink: 0;
+    }
+
+    /* 3-Dot Menu Button */
+    .food-card-menu-button {
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #424242;
+    }
+
+    .food-card-menu-button:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .food-card-menu-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Dropdown Menu - Positioned to the RIGHT of the button */
+    .food-card-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 4px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 140px;
+    }
+
+    .food-card-dropdown button {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      text-align: left;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #424242;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .food-card-dropdown button:hover {
+      background: #f5f5f5;
+    }
+
+    .food-card-dropdown button:not(:last-child) {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .food-card-dropdown button:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .food-card-dropdown button:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* ============================================
+       BADGE COMPONENT
+       ============================================ */
+
+    .food-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-family: var(--food-font-primary);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .food-badge--open {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--food-color-success);
+    }
+
+    .food-badge--closed {
+      background: rgba(255, 104, 104, 0.1);
+      color: var(--food-color-error);
+    }
+
+    /* ============================================
+       GRID LAYOUTS
+       ============================================ */
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 357px);
+      gap: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+
+    @keyframes foodFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes foodSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+
+    .food-flex {
+      display: flex;
+    }
+
+    .food-flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .food-flex-between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .food-hidden {
+      display: none;
+    }
+
+    .food-visible {
+      display: block;
+    }
+
+    /* ============================================
+       RESPONSIVE BREAKPOINTS
+       ============================================ */
+
+    @media (max-width: 1536px) {
+      .food-content--desktop {
+        padding: 0 var(--food-spacing-3xl);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .food-content--desktop {
+        padding: 0 var(--food-spacing-xl);
+      }
+
+      .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .food-card {
+        width: 100%;
+        max-width: 357px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .food-content--desktop {
+        padding: 0 var(--food-spacing-md);
+      }
+
+      .food-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .food-card {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .food-modal--add,
+      .food-modal--edit,
+      .food-modal--delete {
+        width: 90vw;
+        max-width: 500px;
+        min-height: auto;
+      }
+
+      .food-input,
+      .food-dropdown,
+      .food-modal-form,
+      .food-modal-buttons,
+      .food-modal-message {
+        width: 100%;
+      }
+
+      .food-button--modal {
+        width: 100%;
+        flex: 1;
+      }
+
+      .food-text-hero {
+        font-size: var(--food-text-4xl);
+      }
+
+      .food-hero-search {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .food-nav-content {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .food-card {
+        width: 100%;
+        max-width: 357px;
+      }
+
+      .food-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+
+      .food-text-hero {
+        font-size: var(--food-text-2xl);
+      }
+    }
