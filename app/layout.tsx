@@ -32,41 +32,53 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Filter out browser extension errors in development */}
-        {process.env.NODE_ENV === 'development' && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                // Suppress browser extension errors
+      <body className={`${openSans.variable} ${sourceSansPro.variable}`}>
+        {/* Suppress browser extension errors - must run before React */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const originalError = console.error;
+                console.error = function(...args) {
+                  const msg = args[0]?.toString() || '';
+                  if (msg.includes('message channel closed') || 
+                      msg.includes('illegal path') ||
+                      msg.includes('ResumeSwitcher') ||
+                      msg.includes('autofillInstance')) {
+                    return;
+                  }
+                  originalError.apply(console, args);
+                };
+                
                 window.addEventListener('error', function(e) {
                   if (e.message && (
                     e.message.includes('message channel closed') ||
                     e.message.includes('illegal path') ||
                     e.message.includes('ResumeSwitcher') ||
-                    e.message.includes('autofillInstance')
+                    e.message.includes('autofillInstance') ||
+                    e.message.includes('filesystem')
                   )) {
                     e.stopImmediatePropagation();
                     e.preventDefault();
-                    return true;
+                    return false;
                   }
-                });
+                }, true);
+                
                 window.addEventListener('unhandledrejection', function(e) {
-                  if (e.reason && e.reason.message && (
+                  if (e.reason?.message && (
                     e.reason.message.includes('message channel closed') ||
-                    e.reason.message.includes('illegal path')
+                    e.reason.message.includes('illegal path') ||
+                    e.reason.message.includes('filesystem')
                   )) {
                     e.stopImmediatePropagation();
                     e.preventDefault();
-                    return true;
+                    return false;
                   }
-                });
-              `,
-            }}
-          />
-        )}
-      </head>
-      <body className={`${openSans.variable} ${sourceSansPro.variable}`}>
+                }, true);
+              })();
+            `,
+          }}
+        />
         <ThemeProvider>
           <Providers>{children}</Providers>
         </ThemeProvider>
