@@ -176,11 +176,43 @@
 .food-hero-image {
   position: absolute;
   right: 180px;
-  top: 40%;
-  /*transform: translateY(-50%) rotateY(180deg);*/
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
   z-index: 1;
   width: 497px;
   height: 497px;
+}
+
+/* Hero Image Shadow Container - Matching Figma Design */
+.food-hero-image::before {
+  content: '';
+  position: absolute;
+  width: 611px;
+  height: 612px;
+  left: -57px;
+  top: -57px;
+  background: rgba(196, 196, 196, 0.7);
+  mix-blend-mode: multiply;
+  filter: blur(40.81px);
+  border-radius: 50%;
+  z-index: -2;
+  transform: scaleX(-1);
+}
+
+/* Hero Image Inner Shadow - Matching Figma Design */
+.food-hero-image::after {
+  content: '';
+  position: absolute;
+  width: 539px;
+  height: 540px;
+  left: 23px;
+  top: -46px;
+  background: radial-gradient(85.93% 85.93% at 50% 50%, rgba(205, 205, 205, 0.8) 0%, rgba(196, 196, 196, 0) 100%);
+  mix-blend-mode: multiply;
+  filter: blur(13.1028px);
+  border-radius: 50%;
+  z-index: -1;
+  transform: scaleX(-1);
 }
 
 /* ===== FEATURED MEALS SECTION ===== */
