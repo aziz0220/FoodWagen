@@ -6,6 +6,8 @@
 'use client';
 
 import React, {useState} from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faInstagram, faFacebook, faXTwitter} from "@fortawesome/free-brands-svg-icons";
 
 export const Footer: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -58,9 +60,9 @@ export const Footer: React.FC = () => {
                         <div className="food-footer-social">
                             <h4>FOLLOW US</h4>
                             <div className="food-footer-icons">
-                                <a href="#instagram" aria-label="Instagram">📷</a>
-                                <a href="#facebook" aria-label="Facebook">📘</a>
-                                <a href="#twitter" aria-label="Twitter">🐦</a>
+                                <a href="#instagram" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
+                                <a href="#facebook" aria-label="Facebook"><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href="#twitter" aria-label="Twitter"><FontAwesomeIcon icon={faXTwitter} /></a>
                             </div>
                         </div>
 

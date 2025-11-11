@@ -175,9 +175,9 @@
 
 .food-hero-image {
   position: absolute;
-  right: 316px;
-  top: 50%;
-  transform: translateY(-50%) rotateY(180deg);
+  right: 180px;
+  top: 40%;
+  /*transform: translateY(-50%) rotateY(180deg);*/
   z-index: 1;
   width: 497px;
   height: 497px;

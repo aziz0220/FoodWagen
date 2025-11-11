@@ -483,29 +483,31 @@
 
     .food-modal--add,
     .food-modal--edit {
-      width: min(934px, 95vw);
+      width: min(700px, 95vw);
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 32px 24px;
     }
 
     .food-modal--add {
-      min-height: 840px;
+      min-height: auto;
       height: auto;
     }
 
     .food-modal--edit {
-      min-height: 1132px;
+      min-height: auto;
       height: auto;
     }
 
     .food-modal--delete {
-      width: min(712px, 95vw);
-      min-height: 325px;
+      width: min(500px, 95vw);
+      min-height: auto;
       height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 32px 24px;
     }
 
     .food-modal-title {
@@ -892,7 +894,7 @@
       }
 
       .food-grid {
-        justify-content: center;
+        justify-items: center;
       }
 
       .food-card {

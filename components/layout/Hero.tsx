@@ -8,7 +8,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faMagnifyingGlass, faBagShopping, faMotorcycle} from "@fortawesome/free-solid-svg-icons";
 
 
 export interface HeroProps {
@@ -42,14 +42,14 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
               className={`food-hero-tab ${activeTab === 'delivery' ? 'food-hero-tab--active' : ''}`}
               onClick={() => setActiveTab('delivery')}
             >
-              <span className="food-icon">🏍️</span>
+              <span className="food-icon"><FontAwesomeIcon icon={faMotorcycle} /></span>
               <span>Delivery</span>
             </button>
             <button
               className={`food-hero-tab ${activeTab === 'pickup' ? 'food-hero-tab--active' : ''}`}
               onClick={() => setActiveTab('pickup')}
             >
-              <span className="food-icon">🛍️</span>
+              <span className="food-icon"><FontAwesomeIcon icon={faBagShopping} /></span>
               <span>Pickup</span>
             </button>
           </div>

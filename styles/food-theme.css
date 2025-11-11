@@ -1,4 +1,4 @@
-/**
+ic/**
  * Dark Theme Styles
  * Override colors for dark mode
  */
@@ -67,6 +67,102 @@
 
 [data-theme="dark"] .food-card-dropdown button:hover {
   background: #3a3a3a;
+}
+
+/* Modal Dark Mode Styles */
+[data-theme="dark"] .food-modal {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+[data-theme="dark"] .food-modal-title {
+  color: #ffba26;
+}
+
+[data-theme="dark"] .food-modal-message {
+  color: #e0e0e0;
+}
+
+/* Input Dark Mode Styles */
+[data-theme="dark"] .food-input {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .food-input:focus {
+  border-color: #ffba26;
+  background: #252525;
+}
+
+[data-theme="dark"] .food-input::placeholder {
+  color: #757575;
+}
+
+/* Dropdown Dark Mode Styles */
+[data-theme="dark"] .food-dropdown {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .food-dropdown:focus {
+  border-color: #ffba26;
+  background: #252525;
+}
+
+/* Label Dark Mode Styles */
+[data-theme="dark"] .food-label {
+  color: #e0e0e0;
+}
+
+/* Text Color Improvements for Dark Mode */
+[data-theme="dark"] .food-featured-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .food-card-subtitle,
+[data-theme="dark"] .food-card-info,
+[data-theme="dark"] .food-text-secondary {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .food-card-description,
+[data-theme="dark"] .food-text-muted {
+  color: #bdbdbd;
+}
+
+[data-theme="dark"] .food-hero-tab {
+  color: #bdbdbd;
+}
+
+[data-theme="dark"] .food-hero-tab--active {
+  color: #f17228;
+  background: rgba(241, 114, 40, 0.15);
+}
+
+[data-theme="dark"] .food-card-menu-button {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .food-card-menu-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .food-card-dropdown button {
+  color: #e0e0e0;
+}
+
+/* Button Dark Mode Styles */
+[data-theme="dark"] .food-button--secondary {
+  color: #e0e0e0;
+  border-color: #ffba26;
+}
+
+[data-theme="dark"] .food-button--secondary:hover:not(:disabled) {
+  background: rgba(255, 186, 38, 0.15);
+  border-color: #ffc947;
+  color: #ffffff;
 }
 
 /* Theme Toggle Button */
