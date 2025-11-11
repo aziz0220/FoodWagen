@@ -15,10 +15,12 @@
 .food-nav-content {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 16px 220px;
+  padding: 16px min(220px, 5vw);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .food-logo {
@@ -66,11 +68,13 @@
 
 .food-hero-content {
   max-width: 856px;
-  margin-left: 220px;
+  margin-left: min(220px, 5vw);
+  margin-right: min(220px, 5vw);
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
 }
 
 .food-hero-title h1 {
