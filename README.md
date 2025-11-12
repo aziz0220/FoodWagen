@@ -108,11 +108,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 npm test
 ```
 
-### Test Results
-```
-Test Suites: 3 passed, 3 total
-Tests:       44 passed, 44 total
-```
 
 ## 📝 API Integration
 
@@ -132,7 +127,7 @@ interface Meal {
 
 ## 🔧 Technologies
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript (strict mode)
 - **Styling**: Custom CSS (NO Tailwind)
 - **State Management**: Zustand
@@ -148,5 +143,3 @@ interface Meal {
 - GitHub: [@aziz0220](https://github.com/aziz0220)
 
 ---
-
-**Built with ❤️ for the A2SV challenge**

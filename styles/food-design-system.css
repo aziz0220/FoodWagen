@@ -830,12 +830,11 @@
       align-items: flex-start;
       padding: 8px 16px;
       gap: 10px;
-      height: 42px;
       border-radius: 16px;
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 14px;
-      font-weight: 700;
-      line-height: 1.5;
+      font-weight: 800;
+      line-height: 1.6;
       letter-spacing: 0.02em;
       text-transform: capitalize;
       transition: all 0.3s ease;
@@ -846,13 +845,11 @@
     }
 
     .food-badge--open {
-      width: 84px;
       background: rgba(121, 185, 60, 0.2);
       color: #4caf50;
     }
 
     .food-badge--closed {
-      width: 97px;
       background: rgba(241, 114, 40, 0.2);
       color: #f17228;
     }
