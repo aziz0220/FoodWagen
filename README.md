@@ -1,5 +1,4 @@
-# 🍔 FoodWagen - Meal Discovery ApplicationThis is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
+# 🍔 FoodWagen - Meal Discovery App.
 
 
 A modern, pixel-perfect meal discovery web application built with Next.js 16, TypeScript, and custom CSS. Browse, create, edit, and delete meals from various restaurants with a beautiful, responsive UI.## Getting Started
@@ -162,7 +161,6 @@ Our GitHub Actions workflow automatically runs on PRs:
 
 - 📖 Check existing issues and PRs
 - 💬 Ask questions in issue comments
-- 📧 Contact: benamoraziz0220@gmail.com
 
 ## 👤 Author
 
