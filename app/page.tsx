@@ -17,6 +17,7 @@ import { Footer } from '@/components/layout/Footer';
 import { AddMealModal } from '@/components/AddMealModal';
 import { EditMealModal } from '@/components/EditMealModal';
 import { DeleteMealModal } from '@/components/DeleteMealModal';
+import { Spinner } from '@/components/Spinner';
 
 export default function Home() {
   // Fetch meals data
@@ -102,7 +103,7 @@ export default function Home() {
       <main>
         {isLoading && (
           <div className="food-flex-center" style={{ padding: '80px 0' }}>
-            <p className="food-text-body">Loading meals...</p>
+            <Spinner size="large" message="Loading delicious meals..." />
           </div>
         )}
 
@@ -159,6 +160,19 @@ export default function Home() {
         onConfirm={handleDeleteMeal}
         isLoading={deleteMealMutation.isPending}
       />
+
+      {/* Full Page Loading Spinner for API Operations */}
+      {(createMealMutation.isPending || updateMealMutation.isPending || deleteMealMutation.isPending) && (
+        <Spinner 
+          fullPage 
+          size="large" 
+          message={
+            createMealMutation.isPending ? 'Adding meal...' :
+            updateMealMutation.isPending ? 'Updating meal...' :
+            'Deleting meal...'
+          } 
+        />
+      )}
     </>
   );
 }
