@@ -36,16 +36,22 @@ export const DeleteMealModal: React.FC<DeleteMealModalProps> = ({
   onConfirm,
   isLoading = false,
 }) => {
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open and maintain scroll position
   useEffect(() => {
     if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.top = `-${scrollY}px`;
       document.body.classList.add('modal-open');
     } else {
+      const scrollY = document.body.style.top;
       document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
     
     return () => {
       document.body.classList.remove('modal-open');
+      document.body.style.top = '';
     };
   }, [isOpen]);
 

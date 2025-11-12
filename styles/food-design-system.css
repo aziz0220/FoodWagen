@@ -493,6 +493,8 @@
       overflow: hidden;
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
     }
 
     .food-modal--add,
@@ -1278,4 +1280,100 @@
       .food-text-hero {
         font-size: var(--food-text-2xl);
       }
+    }
+
+    /* ============================================
+       CUSTOM SCROLLBAR STYLING
+       ============================================ */
+
+    /* Webkit browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--food-color-white);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        var(--food-color-primary) 0%,
+        #ff8c42 50%,
+        #ffa500 100%
+      );
+      border-radius: 10px;
+      border: 2px solid var(--food-color-white);
+      transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        180deg,
+        #ff8c42 0%,
+        var(--food-color-primary) 50%,
+        #ff6b00 100%
+      );
+      border-width: 1px;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background: var(--food-color-primary);
+    }
+
+    /* Dark mode scrollbar */
+    [data-theme="dark"] ::-webkit-scrollbar-track {
+      background: var(--food-color-dark-bg);
+    }
+
+    [data-theme="dark"] ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        var(--food-color-primary) 0%,
+        #d66028 50%,
+        #b84f20 100%
+      );
+      border-color: var(--food-color-dark-bg);
+    }
+
+    [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        180deg,
+        #ff8c42 0%,
+        var(--food-color-primary) 50%,
+        #d66028 100%
+      );
+    }
+
+    [data-theme="dark"] ::-webkit-scrollbar-thumb:active {
+      background: var(--food-color-primary);
+    }
+
+    /* Firefox scrollbar styling */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--food-color-primary) var(--food-color-white);
+    }
+
+    [data-theme="dark"] * {
+      scrollbar-color: var(--food-color-primary) var(--food-color-dark-bg);
+    }
+
+    /* Modal scrollbar specific styling */
+    .food-modal::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .food-modal::-webkit-scrollbar-thumb {
+      border-width: 1px;
+    }
+
+    .food-modal-overlay::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .food-modal-overlay::-webkit-scrollbar-thumb {
+      border-width: 1px;
     }
