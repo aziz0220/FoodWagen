@@ -69,6 +69,101 @@ interface Meal {
 - **Fonts**: Open Sans + Source Sans Pro
 - **Deployment**: Vercel
 
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+### Getting Started
+
+1. **Fork the repository**
+   ```bash
+   # Click the "Fork" button on GitHub
+   ```
+
+2. **Clone your fork**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/FoodWagenChallenge.git
+   cd FoodWagenChallenge/foodwagen
+   ```
+
+3. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Make your changes**
+   - Write clean, documented code
+   - Follow existing code style and conventions
+   - Add tests for new features
+   - Update documentation as needed
+
+5. **Test your changes**
+   ```bash
+   npm test
+   npm run build
+   npm run lint
+   ```
+
+6. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "feat: add your feature description"
+   ```
+   
+   **Commit Convention:**
+   - `feat:` New feature
+   - `fix:` Bug fix
+   - `docs:` Documentation changes
+   - `style:` Code style changes (formatting, etc.)
+   - `refactor:` Code refactoring
+   - `test:` Adding or updating tests
+   - `chore:` Maintenance tasks
+
+7. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+8. **Create a Pull Request**
+   - Go to the original repository
+   - Click "New Pull Request"
+   - Select your fork and branch
+   - Fill in the PR template with details
+   - Wait for CI checks to pass
+   - Respond to review feedback
+
+### PR Guidelines
+
+- ✅ All tests must pass
+- ✅ Code must pass linting
+- ✅ Build must succeed
+- ✅ Describe what your PR does
+- ✅ Link related issues
+- ✅ Keep PRs focused and atomic
+
+### Development Workflow
+
+Our GitHub Actions workflow automatically runs on PRs:
+- **Lint & Type Check** - Ensures code quality
+- **Tests** - Runs all test suites
+- **Build** - Verifies production build
+- **Security Scan** - Checks for vulnerabilities
+
+### Code Style
+
+- Use TypeScript with strict mode
+- Follow existing naming conventions
+- Use `food-*` prefix for CSS classes
+- Write meaningful comments
+- Keep components small and focused
+- Use proper TypeScript types (no `any`)
+
+### Need Help?
+
+- 📖 Check existing issues and PRs
+- 💬 Ask questions in issue comments
+- 📧 Contact: benamoraziz0220@gmail.com
+
 ## 👤 Author
 
 **Aziz Ben Amor**
