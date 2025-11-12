@@ -826,31 +826,35 @@
 
     .food-badge {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: row;
+      align-items: flex-start;
       padding: 8px 16px;
-      border-radius: 24px;
+      gap: 10px;
+      height: 42px;
+      border-radius: 16px;
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      line-height: 1;
+      line-height: 1.5;
       letter-spacing: 0.02em;
       text-transform: capitalize;
       transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
+      flex: none;
+      flex-grow: 0;
+      border: none;
     }
 
     .food-badge--open {
-      background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.08) 100%);
-      color: #2e7d32;
-      border: 1.5px solid rgba(76, 175, 80, 0.3);
+      width: 84px;
+      background: rgba(121, 185, 60, 0.2);
+      color: #4caf50;
     }
 
     .food-badge--closed {
-      background: linear-gradient(135deg, rgba(244, 67, 54, 0.15) 0%, rgba(244, 67, 54, 0.08) 100%);
-      color: #c62828;
-      border: 1.5px solid rgba(244, 67, 54, 0.3);
+      width: 97px;
+      background: rgba(241, 114, 40, 0.2);
+      color: #f17228;
     }
 
     /* ============================================
