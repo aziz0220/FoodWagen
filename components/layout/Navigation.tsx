@@ -36,7 +36,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
         </div>
 
         {/* Theme Toggle and Add Meal Button */}
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <div className="food-nav-actions">
           <button
             onClick={toggleTheme}
             className="food-theme-toggle"
@@ -51,7 +51,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onAddMealClick }) => {
             onClick={onAddMealClick}
             className="food-button--nav"
           >
-            Add Meal
+            <span className="food-nav-button-text">Add Meal</span>
+            <span className="food-nav-button-icon">+</span>
           </Button>
         </div>
       </div>

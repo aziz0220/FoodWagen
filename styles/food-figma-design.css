@@ -19,20 +19,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
+}
+
+.food-nav-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .food-logo {
   display: flex;
   align-items: center;
   gap: 11.5px;
+  flex-shrink: 0;
 }
 
 .food-logo-icon {
   width: 28px;
   height: 30px;
   position: relative;
+  flex-shrink: 0;
 }
 
 .food-logo-text {
@@ -42,6 +51,7 @@
   line-height: 1.2;
   letter-spacing: -0.7778px;
   color: #f17228;
+  white-space: nowrap;
 }
 
 .food-logo-accent {
@@ -51,7 +61,18 @@
 .food-button--nav {
   padding: 12px 24px;
   font-size: 18px;
-  width: 150px;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+.food-nav-button-text {
+  display: inline;
+}
+
+.food-nav-button-icon {
+  display: none;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 /* ===== HERO SECTION ===== */
@@ -936,7 +957,11 @@
 @media (max-width: 768px) {
   .food-nav-content {
     padding: 12px 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .food-nav-actions {
     gap: 12px;
   }
 
@@ -954,15 +979,29 @@
   }
 
   .food-button--nav {
-    padding: 8px 16px;
-    font-size: 14px;
-    width: auto;
+    padding: 10px 12px;
+    font-size: 20px;
+    min-width: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .food-nav-button-text {
+    display: none;
+  }
+
+  .food-nav-button-icon {
+    display: inline;
   }
 
   .food-theme-toggle {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
   }
 
   .food-hero {
@@ -1082,9 +1121,30 @@
 
 /* Extra Small Screens */
 @media (max-width: 480px) {
-  .food-nav-content > div:last-child {
-    width: 100%;
-    justify-content: space-between;
+  .food-nav-content {
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  .food-nav-actions {
+    gap: 8px;
+  }
+
+  .food-logo-text {
+    font-size: 18px;
+  }
+
+  .food-button--nav {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    font-size: 18px;
+  }
+
+  .food-theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 
   .food-hero-title h1 {
