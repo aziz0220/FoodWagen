@@ -18,6 +18,7 @@ import { AddMealModal } from '@/components/AddMealModal';
 import { EditMealModal } from '@/components/EditMealModal';
 import { DeleteMealModal } from '@/components/DeleteMealModal';
 import { Spinner } from '@/components/Spinner';
+import { MealGridSkeleton } from '@/components/MealCardSkeleton';
 
 export default function Home() {
   // Fetch meals data
@@ -102,9 +103,7 @@ export default function Home() {
       {/* Featured Meals Section */}
       <main>
         {isLoading && (
-          <div className="food-flex-center" style={{ padding: '80px 0' }}>
-            <Spinner size="large" message="Loading delicious meals..." />
-          </div>
+          <MealGridSkeleton count={6} />
         )}
 
         {error && (
