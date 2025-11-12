@@ -4,7 +4,7 @@
  * Dimensions: 934×840px, 6 fields without labels, "Add " button (with space)
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
 import { RestaurantStatusDropdown } from './Dropdown';
@@ -44,6 +44,19 @@ export const AddMealModal: React.FC<AddMealModalProps> = ({
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [isOpen]);
 
   // Handle input change
   const handleChange = (

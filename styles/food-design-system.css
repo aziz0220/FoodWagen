@@ -468,7 +468,9 @@
       z-index: 1000;
       animation: foodFadeIn var(--food-transition-normal);
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 20px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .food-modal {
@@ -480,7 +482,17 @@
       max-width: 95vw;
       max-height: 90vh;
       overflow-y: auto;
+      overflow-x: hidden;
       margin: auto;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent body scroll when modal is open */
+    body.modal-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
     }
 
     .food-modal--add,

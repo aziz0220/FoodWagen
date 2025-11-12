@@ -5,7 +5,7 @@
  * "Yes" button is ORANGE (not red danger color)
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from './Button';
 import { Meal } from '@/types/meal';
 
@@ -36,6 +36,19 @@ export const DeleteMealModal: React.FC<DeleteMealModalProps> = ({
   onConfirm,
   isLoading = false,
 }) => {
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [isOpen]);
+
   const handleConfirm = () => {
     if (meal?.id) {
       onConfirm(meal.id);
