@@ -584,10 +584,16 @@
       object-fit: cover;
       display: block;
       transition: transform 0.3s ease;
+      border-radius: 16px;
     }
 
     .food-card:hover .food-card-image {
       transform: scale(1.05);
+    }
+
+    .food-card > div:first-child {
+      border-radius: 16px;
+      overflow: hidden;
     }
 
     .food-card > div:first-child::after {
