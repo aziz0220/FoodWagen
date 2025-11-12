@@ -27,6 +27,11 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
 
   return (
     <section className="food-hero">
+      {/* Decorative background circles */}
+      <div className="food-hero-bg-circle food-hero-bg-circle-1"></div>
+      <div className="food-hero-bg-circle food-hero-bg-circle-2"></div>
+      <div className="food-hero-bg-circle food-hero-bg-circle-3"></div>
+      
       <div className="food-hero-content">
         {/* Title */}
         <div className="food-hero-title">
@@ -86,16 +91,5 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
         </div>
       </div>
 
-      {/* Hero Food Image */}
-      <div className="food-hero-image">
-        <Image
-          src="/images/hero/hero-food.png"
-          alt="Delicious food"
-          width={497}
-          height={497}
-          priority
-        />
-      </div>
-    </section>
-  );
+
 };
