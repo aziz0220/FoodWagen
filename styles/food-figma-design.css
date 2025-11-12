@@ -575,10 +575,12 @@
 .food-load-more:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0px 7px 15px rgba(255, 174, 0, 0.3), 0px 25px 50px rgba(255, 174, 0, 0.35);
+  background: linear-gradient(135deg, #ffc947 0%, #ffba26 100%);
 }
 
 .food-load-more:active:not(:disabled) {
   transform: translateY(0);
+  background: linear-gradient(135deg, #ffb30e 0%, #ffa500 100%);
 }
 
 .food-load-more:disabled {
