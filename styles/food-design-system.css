@@ -419,6 +419,8 @@
       color: var(--food-color-text-secondary);
       cursor: pointer;
       outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       appearance: none;
       background-image: url('/icons/chevron-down.svg');
       background-repeat: no-repeat;
@@ -734,6 +736,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
     }
 
