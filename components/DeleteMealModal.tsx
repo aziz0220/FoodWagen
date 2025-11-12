@@ -46,12 +46,21 @@ export const DeleteMealModal: React.FC<DeleteMealModalProps> = ({
       const scrollY = document.body.style.top;
       document.body.classList.remove('modal-open');
       document.body.style.top = '';
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      // Use requestAnimationFrame to ensure smooth scroll restoration
+      requestAnimationFrame(() => {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      });
     }
     
     return () => {
+      const scrollY = document.body.style.top;
       document.body.classList.remove('modal-open');
       document.body.style.top = '';
+      if (scrollY) {
+        requestAnimationFrame(() => {
+          window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        });
+      }
     };
   }, [isOpen]);
 

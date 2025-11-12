@@ -581,6 +581,8 @@
       flex-direction: column;
       flex-shrink: 0;
       position: relative;
+      /* Reserve space for hover effect to prevent layout shift */
+      margin-bottom: 6px;
     }
 
     .food-card:hover {
@@ -591,6 +593,8 @@
         0px 16px 32px rgba(0, 0, 0, 0.08),
         0px 24px 48px rgba(241, 114, 40, 0.12);
       border: 1px solid rgba(241, 114, 40, 0.1);
+      /* Compensate for the upward movement */
+      margin-bottom: 0px;
     }
 
     .food-card-image {
@@ -1050,6 +1054,8 @@
       flex-direction: column;
       flex-shrink: 0;
       position: relative;
+      /* Match card spacing to prevent layout shift when loading completes */
+      margin-bottom: 6px;
     }
 
     .food-skeleton-image {
