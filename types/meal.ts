@@ -5,9 +5,9 @@
 
 /**
  * Restaurant status enum
- * Must be exactly "Open Now" or "Closed" as per API requirements
+ * "Open" or "Closed" as per requirements
  */
-export type RestaurantStatus = "Open Now" | "Closed";
+export type RestaurantStatus = "Open" | "Open Now" | "Closed";
 
 /**
  * Restaurant interface

@@ -84,7 +84,7 @@ class MealApiClient {
       food_price: item.food_price || item.Price || (8 + Math.random() * 32), // Random price 8-40 if not provided
       restaurant_name: item.restaurant_name || item.restaurantName || item.name || 'Unknown',
       restaurant_logo: restaurantLogo, // Empty string if invalid, UI layer handles placeholder
-      restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open Now'),
+      restaurant_status: item.restaurant_status || (item.status === 'Closed' ? 'Closed' : item.open === false ? 'Closed' : 'Open'),
       createdAt: item.createdAt,
     };
   }

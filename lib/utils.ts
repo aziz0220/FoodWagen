@@ -143,10 +143,10 @@ export function validateMealData(data: Partial<CreateMealData>): ValidationError
       field: 'restaurant_status',
       message: 'Restaurant status is required',
     });
-  } else if (data.restaurant_status !== 'Open Now' && data.restaurant_status !== 'Closed') {
+  } else if (data.restaurant_status !== 'Open' && data.restaurant_status !== 'Open Now' && data.restaurant_status !== 'Closed') {
     errors.push({
       field: 'restaurant_status',
-      message: 'Restaurant status must be "Open Now" or "Closed"',
+      message: 'Restaurant status must be "Open" or "Closed"',
     });
   }
 
@@ -190,14 +190,15 @@ export function truncateText(text: string, maxLength: number): string {
  * Get badge color class based on restaurant status
  */
 export function getStatusBadgeClass(status: RestaurantStatus): string {
-  return status === 'Open Now' ? 'food-badge--open' : 'food-badge--closed';
+  return status === 'Open' || status === 'Open Now' ? 'food-badge--open' : 'food-badge--closed';
 }
 
 /**
  * Get display text for restaurant status
  */
 export function getStatusText(status: RestaurantStatus): string {
-  return status;
+  // Normalize "Open Now" to "Open"
+  return status === 'Open Now' ? 'Open' : status;
 }
 
 /**
