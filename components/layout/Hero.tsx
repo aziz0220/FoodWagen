@@ -91,5 +91,19 @@ export const Hero: React.FC<HeroProps> = ({ onSearch }) => {
         </div>
       </div>
 
-
+      {/* Hero Food Image */}
+      <div className="food-hero-image-wrapper">
+        <div className="food-hero-image-backdrop"></div>
+        <div className="food-hero-image">
+          <Image
+            src="/images/hero/hero-food.png"
+            alt="Delicious food"
+            width={497}
+            height={497}
+            priority
+          />
+        </div>
+      </div>
+    </section>
+  );
 };

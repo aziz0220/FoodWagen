@@ -299,7 +299,7 @@
 .food-hero-image-wrapper {
   position: absolute;
   right: 180px;
-  top: 50%;
+  top: 65%;
   /* transform: translateY(-50%); */
   z-index: 5;
   width: 497px;
@@ -345,7 +345,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-70%, -70%);
   width: 120%;
   height: 120%;
   background: radial-gradient(
@@ -365,7 +365,7 @@
   position: absolute;
   bottom: -30px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-80%);
   width: 80%;
   height: 40px;
   background: radial-gradient(
