@@ -6,6 +6,13 @@ A modern, pixel-perfect meal discovery web application built with Next.js 16, Ty
 
 ### Installation
 
+**Run with Docker Compose**
+   ```bash
+   docker-compose up
+   ```
+
+   **OR**
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/aziz0220/FoodWagenChallenge.git
