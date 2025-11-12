@@ -48,27 +48,49 @@ export const AddMealModal: React.FC<AddMealModalProps> = ({
   // Prevent body scroll when modal is open and maintain scroll position
   useEffect(() => {
     if (isOpen) {
+      // Save current scroll position
       const scrollY = window.scrollY;
+      const scrollX = window.scrollX;
+      
+      // Store in body dataset for retrieval
+      document.body.dataset.scrollY = String(scrollY);
+      document.body.dataset.scrollX = String(scrollX);
+      
+      // Apply fixed positioning with negative top
       document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = `-${scrollX}px`;
       document.body.classList.add('modal-open');
     } else {
-      const scrollY = document.body.style.top;
+      // Retrieve stored scroll position
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
+      
+      // Remove modal-open class and styles
       document.body.classList.remove('modal-open');
       document.body.style.top = '';
-      // Use requestAnimationFrame to ensure smooth scroll restoration
-      requestAnimationFrame(() => {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      });
+      document.body.style.left = '';
+      
+      // Clean up dataset
+      delete document.body.dataset.scrollY;
+      delete document.body.dataset.scrollX;
+      
+      // Restore scroll position immediately (no animation)
+      window.scrollTo(scrollX, scrollY);
     }
     
     return () => {
-      const scrollY = document.body.style.top;
+      // Cleanup on unmount
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
+      
       document.body.classList.remove('modal-open');
       document.body.style.top = '';
-      if (scrollY) {
-        requestAnimationFrame(() => {
-          window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        });
+      document.body.style.left = '';
+      
+      if (document.body.dataset.scrollY) {
+        delete document.body.dataset.scrollY;
+        delete document.body.dataset.scrollX;
+        window.scrollTo(scrollX, scrollY);
       }
     };
   }, [isOpen]);
